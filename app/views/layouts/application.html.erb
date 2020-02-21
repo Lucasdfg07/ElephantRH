@@ -18,8 +18,16 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <section class="container">
+    <header>
+      <%= render 'shared/navbar' %>
+    </header>
+
+    <main class="container">
       <%= yield %>
-    </section>
+    </main>
+
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>
