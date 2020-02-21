@@ -12,5 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
  @import "bootstrap/dist/css/bootstrap.css";
+ @import "devise/session";
+
+ .alert {
+   z-index: 9999;
+   width: 100%;
+   opacity: 0.6;
+   cursor: pointer;
+ }

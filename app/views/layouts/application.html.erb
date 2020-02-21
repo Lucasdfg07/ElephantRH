@@ -10,24 +10,30 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+    <% if user_signed_in? %>
+      <header>
+        <%= render 'shared/navbar' %>
+      </header>
     <% end %>
-
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-    <header>
-      <%= render 'shared/navbar' %>
-    </header>
 
     <main class="container">
       <%= yield %>
     </main>
 
-    <footer>
-      <%= render 'shared/footer' %>
-    </footer>
+    <% if user_signed_in? %>
+      <footer>
+        <%= render 'shared/footer' %>
+      </footer>
+    <% end %>
+
+    <section class="fixed-bottom">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </section>
   </body>
 </html>

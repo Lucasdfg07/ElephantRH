@@ -16,3 +16,10 @@
 //= require jquery
 //= require bootstrap/dist/js/bootstrap
 //= require_tree .
+
+// Set time to alert disappear
+$(function() {
+  setTimeout(function(){
+    $('.alert').fadeOut(500);
+  }, 2000);
+});
