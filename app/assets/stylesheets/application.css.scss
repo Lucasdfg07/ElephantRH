@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
- @import "font-awesome-rails";
  @import "../../node_modules/bootstrap/dist/css/bootstrap.css";
  @import "devise/session";
  @import "devise/registration";
