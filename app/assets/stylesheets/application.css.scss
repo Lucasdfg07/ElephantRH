@@ -13,9 +13,8 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
- *= require bootstrap/dist/css/bootstrap.css
  */
-
+ @import "bootstrap/dist/css/bootstrap.css";
  @import "bootstrap-sprockets";
  @import "devise/session";
  @import "devise/registration";
