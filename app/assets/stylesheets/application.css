@@ -16,10 +16,16 @@
  */
  @import "bootstrap/dist/css/bootstrap.css";
  @import "devise/session";
+ @import "devise/registration";
+
 
  .alert {
    z-index: 9999;
    width: 100%;
    opacity: 0.6;
    cursor: pointer;
+ }
+
+ .container {
+   margin-top: 50px;
  }

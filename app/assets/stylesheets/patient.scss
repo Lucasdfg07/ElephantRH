@@ -1,3 +1,85 @@
 // Place all the styles related to the patient controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.patients-list {
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 2px 2px 10px rgba(10,10,10,0.2);
+
+  img {
+    border-radius: 100%;
+  }
+
+  a {
+    color: black;
+    margin: 0px 20px;
+  }
+}
+
+.new_patient {
+  .card {
+    margin-top: 50px;
+    box-shadow: 0px 0px 5px rgba(10,10,10,0.2);
+  }
+
+  input {
+    border: none;
+    width: 90%;
+    border-bottom: 1px solid rgba(200,200,200,0.9);
+  }
+
+  textarea {
+    width: 80%;
+    box-shadow: 2px 2px 10px rgba(10,10,10,0.2);
+    border: none;
+    margin-top: 10px;
+  }
+
+  .card-body {
+    .col-6 {
+      margin-top: 30px;
+    }
+  }
+
+  .intelectual-area {
+    thead {
+      background-color: #4caf50;
+      opacity: 0.7;
+      color: white;
+    }
+
+    .table-description ul li {
+      display: inline;
+      margin: 0px 10px;
+    }
+  }
+
+  .facilities {
+    thead {
+      background-color: #03a9f4;
+      color: white;
+    }
+    .add-aspects {
+      box-shadow: -2px 2px 10px rgba(10,10,10,0.2);
+      width: 60px;
+      padding: 5px;
+      border-radius: 100%;
+      font-size: 1.8em;
+    }
+  }
+
+  .inferior-buttons {
+    margin-top: 30px;
+    text-align: center;
+
+    input {
+      margin-top: 10px;
+    }
+    .photo {
+      width: 40%;
+    }
+    .save {
+      width: 150px;
+    }
+  }
+}

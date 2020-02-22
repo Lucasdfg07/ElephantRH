@@ -1,2 +1,24 @@
-<h1>Patient#index</h1>
-<p>Find me in app/views/patient/index.html.erb</p>
+<section class="patient text-center">
+  <h3>Listagem de todos os candidatos cadastrados <%= fa_icon "user-circle" %></h3>
+
+
+  <% @patient_list.each do |patient| %>
+    <section class="card patients-list">
+      <section class="row">
+        <section class="col-4">
+          <% if patient.avatar.url.present? %>
+            <%= image_tag(patient.avatar.medium.url) %>
+          <% end %>
+        </section>
+
+        <section class="col-8">
+          <h3><%= patient.name %></h3>
+          <p><%= patient.form_id %></p>
+
+          <%= link_to 'Visualizar PDF', patient_edit_path %>
+          <%= link_to 'Editar Perfil', patient_edit_path(patient) %>
+        </section>
+      </section>
+    </section>
+  <% end %>
+</section>

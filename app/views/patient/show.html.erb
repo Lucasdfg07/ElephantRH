@@ -1,2 +1,55 @@
-<h1>Patient#show</h1>
-<p>Find me in app/views/patient/show.html.erb</p>
+<section class="new_patient text-center">
+    <h4>Edição de um Cliente</h4>
+
+    <%= form_with(model: @patient, url: {action: 'update'}) do |f| %>
+      <section class="card">
+        <section class="card-header">
+          Identificação do Candidato
+        </section>
+
+        <section class="card-body">
+          <section class="row">
+            <section class="col-6">
+              Empresa <br />
+              <%= f.text_field :company, value: @patient.company  %>
+            </section>
+
+            <section class="col-6">
+              Estado Civil* <br />
+              <%= f.text_field :marital_status, value: @patient.marital_status %>
+            </section>
+
+            <section class="col-6">
+              Nome do Candidato* <br />
+              <%= f.text_field :name, value: @patient.name %>
+            </section>
+
+            <section class="col-6">
+              Escolaridade* <br />
+              <%= f.text_field :schooling, value: @patient.schooling %>
+            </section>
+
+            <section class="col-6">
+              Idade* <br />
+              <%= f.text_field :age, value: @patient.age %>
+            </section>
+
+            <section class="col-6">
+              Cargo <br />
+              <%= f.text_field :office, value: @patient.office %>
+            </section>
+          </section>
+
+
+          <section class="inferior-buttons">
+            <%= f.file_field :avatar, class: 'photo' %>
+            <br />
+            <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
+            <br />
+            <br />
+            <%= link_to 'Voltar', patient_index_path, class: 'btn btn-warning save' %>
+          </section>
+        </section>
+      </section>
+    <% end %>
+</section>

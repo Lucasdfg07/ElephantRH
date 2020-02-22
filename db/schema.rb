@@ -16,21 +16,25 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
   enable_extension "plpgsql"
 
   create_table "forms", force: :cascade do |t|
+    t.bigint "patient_id"
     t.string "personal_moment"
     t.string "profissional_moment"
     t.string "interests"
     t.string "conclusions"
-    t.string "intelectual_map", default: [], array: true
-    t.string "facilities", default: [], array: true
-    t.string "dificulties", default: [], array: true
-    t.string "psicological_concepts", default: [], array: true
+    t.string "intelectual_map"
+    t.string "facilities"
+    t.string "dificulties"
+    t.string "psicological_concepts"
+    t.string "performance_diagnostic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_forms_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "avatar"
+    t.bigint "form_id"
+    t.json "avatar"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.string "schooling"
     t.string "age"
     t.string "office"
+    t.index ["form_id"], name: "index_patients_on_form_id"
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
 

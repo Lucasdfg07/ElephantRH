@@ -1,53 +1,5 @@
 <section class="new_patient text-center">
     <h4>Cadastro de um Cliente</h4>
-
-    <%= form_with(model: @patient, url: {action: 'create'}) do |f| %>
-      <section class="card">
-        <section class="card-header">
-          Identificação do Candidato
-        </section>
-
-        <section class="card-body">
-          <section class="row">
-            <section class="col-6">
-              Empresa <br />
-              <%= f.text_field :company %>
-            </section>
-
-            <section class="col-6">
-              Estado Civil* <br />
-              <%= f.text_field :marital_status, required: true %>
-            </section>
-
-            <section class="col-6">
-              Nome do Candidato* <br />
-              <%= f.text_field :name, required: true %>
-            </section>
-
-            <section class="col-6">
-              Escolaridade* <br />
-              <%= f.text_field :schooling, required: true %>
-            </section>
-
-            <section class="col-6">
-              Idade* <br />
-              <%= f.text_field :age, required: true %>
-            </section>
-
-            <section class="col-6">
-              Cargo <br />
-              <%= f.text_field :office %>
-            </section>
-          </section>
-
-
-          <section class="inferior-buttons">
-            <%= f.file_field :avatar, class: 'photo' %>
-          </section>
-        </section>
-      </section>
-    <% end %>
-
     <%= form_with model: @form do |f| %>
       <section class="card">
         <section class="card-header">
