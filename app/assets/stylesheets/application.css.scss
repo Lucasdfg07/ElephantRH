@@ -13,9 +13,12 @@
  *= require font-awesome
  */
  @import "bootstrap";
-
  @import "devise/session";
  @import "devise/registration";
+ @import "shared/_navbar";
+ @import "shared/_footer";
+ @import "home";
+ @import "patient";
 
 
  .alert {
