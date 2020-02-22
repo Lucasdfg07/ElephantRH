@@ -5,7 +5,7 @@
   <% @patient_list.each do |patient| %>
     <section class="card patients-list">
       <section class="row">
-        <section class="col-4">
+        <section class="col-2">
           <% if patient.avatar.url.present? %>
             <%= image_tag(patient.avatar.medium.url) %>
           <% end %>
@@ -17,6 +17,10 @@
 
           <%= link_to 'Visualizar PDF', patient_edit_path %>
           <%= link_to 'Editar Perfil', patient_edit_path(patient) %>
+        </section>
+
+        <section class="col-2">
+          <%= link_to 'Apagar', patient_path(patient), data: { confirm: 'Are you sure?' } %>
         </section>
       </section>
     </section>

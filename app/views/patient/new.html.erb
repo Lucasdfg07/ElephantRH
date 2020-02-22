@@ -1,7 +1,7 @@
 <section class="new_patient text-center">
     <h4>Cadastro de um Cliente</h4>
 
-    <%= form_with(model: @patient, url: {action: 'create'}) do |f| %>
+    <%= form_with(model: @patient, url: {action: 'create'}, class: 'patient-form') do |f| %>
       <section class="card">
         <section class="card-header">
           Identificação do Candidato
@@ -142,17 +142,17 @@
             </thead>
 
             <tbody>
-              <tr>
-                <td><%= f.text_field :facilities[0] %></td>
-                <td><%= f.text_field :dificulties[0] %></td>
-                <td><a href="#"><%= fa_icon "times" %></a></td>
+              <tr id="0">
+                <td><input id="facilities[0]" type="text" class="facilities-input" /></td>
+                <td><input id="dificulties[0]" type="text" class="dificulties-input" /></td>
+                <td><button class="remove-aspects" onclick="remove(0)"><i class="fa fa-times"></i></button></td>
               </tr>
             </tbody>
           </table>
 
-          <section class="add-aspects pull-right">
+          <button class="add-aspects pull-right">
             +
-          </section>
+          </button>
         </section>
       </section>
 
