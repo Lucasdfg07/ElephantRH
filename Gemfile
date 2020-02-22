@@ -15,6 +15,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-sass'
 
 
