@@ -9,9 +9,4 @@ class Form < ApplicationRecord
 
   validates :intelectual_map, :facilities,
   :dificulties, :psicological_concepts, presence: false
-
-  serialize :intelectual_map, Array
-  serialize :facilities, Array
-  serialize :dificulties, Array
-  serialize :psicological_concepts, Array
 end

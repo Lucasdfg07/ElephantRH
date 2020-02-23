@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.string "profissional_moment"
     t.string "interests"
     t.string "conclusions"
-    t.string "intelectual_map"
-    t.string "facilities"
-    t.string "dificulties"
-    t.string "psicological_concepts"
+    t.string "intelectual_map", default: [], array: true
+    t.string "facilities", default: [], array: true
+    t.string "dificulties", default: [], array: true
+    t.string "psicological_concepts", default: [], array: true
     t.string "performance_diagnostic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'patient/show'
 
   get 'form/index'
+  get 'form/new'
   get 'form/edit'
   post 'form/create'
 end
