@@ -2,7 +2,7 @@
   <h3>Listagem de todos os candidatos cadastrados <%= fa_icon "user-circle" %></h3>
 
 
-  <% @patient_list.each do |patient| %>
+  <% @patients.each do |patient| %>
     <section class="card patients-list">
       <section class="row">
         <section class="col-2">
@@ -11,16 +11,16 @@
           <% end %>
         </section>
 
-        <section class="col-8">
+        <section class="col-8 pt-3">
           <h3><%= patient.name %></h3>
-          <p><%= patient.form_id %></p>
+          <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
 
-          <%= link_to 'Visualizar PDF', patient_edit_path %>
-          <%= link_to 'Editar Perfil', patient_edit_path(patient) %>
+          <%= link_to 'Visualizar PDF', form_index_path %>
+          <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
         </section>
 
-        <section class="col-2">
-          <%= link_to 'Apagar', patient_path(patient), data: { confirm: 'Are you sure?' } %>
+        <section class="col-2 pt-4 mt-4">
+          <%= link_to '<i class="fa fa-trash"></i>'.html_safe, patient_path(patient), method: :delete, data: { confirm: 'Tem certeza?' }, title: 'Excluir', class: 'delete' %>
         </section>
       </section>
     </section>

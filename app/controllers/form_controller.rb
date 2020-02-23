@@ -7,11 +7,12 @@ class FormController < ApplicationController
 
   def new
     @form = Form.new
+    session[:id] = params[:id]
   end
 
   def create
     @form = Form.new(form_params)
-    @form.patient_id = 1
+    @form.patient_id = session[:id]
 
     if @form.save
       redirect_to patient_index_path, notice: 'Formulário Salvo com sucesso!'

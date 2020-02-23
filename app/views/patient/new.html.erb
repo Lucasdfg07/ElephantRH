@@ -1,5 +1,5 @@
 <section class="new_patient text-center">
-    <h4>Cadastro de um Cliente</h4>
+    <h4>Primeiro, realize o cadastro do Cliente</h4>
 
     <%= form_with(model: @patient, url: {action: 'create'}, class: 'patient-form') do |f| %>
       <section class="card">
@@ -43,11 +43,12 @@
 
           <section class="inferior-buttons">
             <%= f.file_field :avatar, class: 'photo' %>
+
+            <br />
+
+            <%= f.submit 'Ir ao formulário', class: 'btn btn-primary save' %>
           </section>
-          <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
         </section>
       </section>
     <% end %>
-
-    <%= link_to 'Form', form_new_path %>
 </section>

@@ -1,6 +1,6 @@
 class PatientController < ApplicationController
   def index
-    @patient_list = Patient.all
+    @patients = current_user.patient
   end
 
   def new
@@ -12,9 +12,9 @@ class PatientController < ApplicationController
     @patient.user_id = current_user.id
 
     if @patient.save
-      redirect_to patient_index_path, notice: 'Paciente Salvo com sucesso!'
+      redirect_to form_new_path(id: @patient.id), notice: 'Candidato Salvo com sucesso!'
     else
-      redirect_to patient_index_path, alert: 'Erro ao cadastrar paciente'
+      redirect_to patient_index_path, alert: 'Erro ao cadastrar Candidato'
     end
   end
 
@@ -22,17 +22,27 @@ class PatientController < ApplicationController
   end
 
   def update
-    @patient = Patient.update(patient_params)
-    redirect_to patient_index_path, notice: 'Paciente Atualizado com sucesso!'
+    @patient = Patient.find(params[:patient_id])
+    
+    if @patient.update(patient_params)
+      redirect_to patient_index_path, notice: 'Candidato Atualizado com sucesso!'
+    else
+      redirect_to patient_index_path, alert: 'Erro na atualização do Candidato!'
+    end
   end
 
   def show
-    @patient = Patient.find(params[:format])
+    @patient = Patient.find(params[:patient_id])
   end
 
   def destroy
-    @patient = Patient.find(params[:id]).destroy
-    redirect_to request.referrer, notice: 'Cliente removido com sucesso!'
+    @patient = Patient.find(params[:id])
+
+    if @patient.destroy
+      redirect_to patient_index_path, notice: 'Cliente removido com sucesso!'
+    else
+      redirect_to patient_index_path, alert: 'Erro na remoção do cliente!'
+    end
   end
 
 
