@@ -8,11 +8,18 @@
 
   img {
     border-radius: 100%;
+    width: 150px;
+    height: 150px;
   }
 
   a {
     color: black;
     margin: 0px 20px;
+  }
+
+  .delete {
+      font-size: 1.3em;
+      color: rgba(200,30,30,0.8);
   }
 }
 
