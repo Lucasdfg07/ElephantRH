@@ -1,7 +1,7 @@
 <section class="new_patient text-center">
     <h4>Edição de um Cliente</h4>
 
-    <%= form_with(model: @patient, url: {action: 'update'}) do |f| %>
+    <%= form_with(model: @patient, url: {action: 'update', patient_id: params[:patient_id]}) do |f| %>
       <section class="card">
         <section class="card-header">
           Identificação do Candidato
