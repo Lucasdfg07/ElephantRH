@@ -31,7 +31,7 @@
 
             <section class="col-6">
               Idade* <br />
-              <%= f.text_field :age, required: true %>
+              <%= f.number_field :age, min: 0, required: true %>
             </section>
 
             <section class="col-6">

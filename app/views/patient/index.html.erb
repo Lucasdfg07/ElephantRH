@@ -15,7 +15,7 @@
           <h3><%= patient.name %></h3>
           <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
 
-          <%= link_to 'Visualizar PDF', form_index_path %>
+          <%= link_to 'Visualizar PDF', form_export_path(patient_id: patient, format: :pdf), target: "_blank" %>
           <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
         </section>
 
@@ -25,4 +25,6 @@
       </section>
     </section>
   <% end %>
+
+  <canvas id="myChart"></canvas>
 </section>

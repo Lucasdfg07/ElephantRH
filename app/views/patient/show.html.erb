@@ -31,7 +31,7 @@
 
             <section class="col-6">
               Idade* <br />
-              <%= f.text_field :age, value: @patient.age %>
+              <%= f.number_field :age, min: 0, value: @patient.age %>
             </section>
 
             <section class="col-6">

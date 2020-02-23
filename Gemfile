@@ -18,6 +18,10 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-sass'
 
+# Gem to generate PDF
+gem 'prawn-rails'
+# Gem to generate graphs
+gem 'chart'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'

@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   get 'form/new'
   get 'form/edit'
   post 'form/create'
+  post 'form/export'
+  get 'form/export'
+  get 'pdf/generate_pdf'
 end
