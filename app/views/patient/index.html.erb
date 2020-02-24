@@ -21,7 +21,7 @@
             <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
             <%= link_to 'Gráfico', patient_graph_path(patient_id: patient) %>
           <% else %>
-            <%= link_to 'Preencher Formulário', form_new_path(id: patient.id) %>
+            <%= link_to 'Preencher Formulário', form_new_path(patient_id: patient.id) %>
             <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
           <% end %>
         </section>
