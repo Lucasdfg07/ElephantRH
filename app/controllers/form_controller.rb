@@ -1,5 +1,5 @@
 class FormController < ApplicationController
-  require './app/views/pdf/generate_pdf'
+  require './app/pdf/generate_pdf'
 
   def index
   end
