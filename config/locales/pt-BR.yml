@@ -1,4 +1,143 @@
 pt-BR:
+  views:
+  admin:
+    home:
+      name: Home
+    pagination:
+      previous: "&laquo; Anterior"
+      next: "Próximo &raquo;"
+      truncate: "…"
+    misc:
+      search: "Procurar"
+      filter: "Filtrar"
+      refresh: "Atualizar"
+      show_all: "Mostrar tudo"
+      add_filter: "Novo Filtro..."
+      bulk_menu_title: "Itens selecionados..."
+      remove: "Remover"
+      add_new: "Criar Novo"
+      chosen: "%{name} escolhido"
+      chose_all: "Escolher tudo"
+      clear_all: "Limpar tudo"
+      up: "Cima"
+      down: "Baixo"
+      navigation: "Navegação"
+      log_out: "Terminar Sessão"
+      ago: "atrás"
+    flash:
+      successful: "%{name} %{action} com sucesso"
+      error: "%{name} %{action} sem sucesso"
+      noaction: "Nenhuma ação executada"
+      model_not_found: "Modelo '%{model}' não encontrado "
+      object_not_found: "%{model} com identificador '%{id}' não encontrado"
+    table_headers:
+      model_name: "Nome do modelo"
+      last_used: "Última vez usado em"
+      records: "Registros"
+      username: "Usuário"
+      changes: "Alterações"
+      created_at: "Data/Hora"
+      item: "Item"
+      message: "Mensagem"
+    actions:
+      dashboard:
+        title: "Administração do Site"
+        menu: "Dashboard"
+        breadcrumb: "Dashboard"
+      index:
+        title: "Lista de %{model_label_plural}"
+        menu: "Lista"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "Detalhes para %{model_label} '%{object_label}'"
+        menu: "Mostrar"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "Mostrar na aplicação"
+      new:
+        title: "Novo %{model_label}"
+        menu: "Criar novo"
+        breadcrumb: "Novo"
+        link: "Criar um novo %{model_label}"
+        done: "criado"
+      edit:
+        title: "Editar %{model_label} '%{object_label}'"
+        menu: "Editar"
+        breadcrumb: "Editar"
+        link: "Editar este %{model_label}"
+        done: "atualizado"
+      delete:
+        title: "Remover %{model_label} '%{object_label}'"
+        menu: "Remover"
+        breadcrumb: "Remover"
+        link: "Remover '%{object_label}'"
+        done: "removido"
+      bulk_delete:
+        title: "Remover %{model_label_plural}"
+        menu: "Remover vários"
+        breadcrumb: "Remover vários"
+        bulk_link: "Remover selecionados %{model_label_plural}"
+      export:
+        title: "Exportar %{model_label}"
+        menu: "Exportar"
+        breadcrumb: "Exportar"
+        link: "Exportar %{model_label_plural} encontrados"
+        bulk_link: "Exportar %{model_label_plural} selecionados"
+        done: "exportados"
+      history_index:
+        title: "Histórico para %{model_label_plural}"
+        menu: "Histórico"
+        breadcrumb: "Histórico"
+      history_show:
+        title: "Histórico para %{model_label} '%{object_label}'"
+        menu: "Histórico"
+        breadcrumb: "Histórico"
+    form:
+      cancel: "Cancelar"
+      basic_info: "Informação Básica"
+      required: "Obrigatórios"
+      optional: "Opcional"
+      one_char: "caracter"
+      char_length_up_to: "comprimento até"
+      char_length_of: "comprimento de"
+      save: "Gravar"
+      save_and_add_another: "Gravar e criar outro"
+      save_and_edit: "Gravar e editar"
+      all_of_the_following_related_items_will_be_deleted: "? Os seguintes item serão apagados ou deixados orfãos:"
+      are_you_sure_you_want_to_delete_the_object: "Tem a certeza que quer apagar este %{model_name}"
+      confirmation: "Sim, tenho a certeza"
+      delete_confirmation: "Confirmar apagar"
+      bulk_delete: "Os seguintes objetos serão apagados, o que pode apagar ou deixar orfãos as dependências relacionadas"
+    export:
+      confirmation: "Exportar para %{name}"
+      select: "Selecionar campos para exportar"
+      fields_from: "Campos de %{name}"
+      fields_from_associated: "Campos associados com %{name}"
+      display: "Mostrar %{name}: %{type}"
+      options_for: "Opções para %{name}"
+      empty_value_for_associated_objects: "<vazio>"
+      click_to_reverse_selection: 'Click para inverter selecção'
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "Codificar para"
+        encoding_to_help: "Escolha a codificação. Deixe em branco para manter a codificação original: (%{name})"
+        skip_header: "Sem cabeçalho"
+        skip_header_help: "Não gerar cabeçalhos para (Campos sem cabeçalho)"
+        default_col_sep: ","
+        col_sep: "Separador de colunas"
+        col_sep_help: "Deixar em branco para usar omissão ('%{value}')" # value is default_col_sep
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Pr&oacute;ximo &#8594;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page_html:
+        zero:  "Nenhum registro encontrado"
+        one:   "Apenas 1 registro encontrado"
+        other: "Mostrando todos os %{count} registros encontrados"
+      multi_page: "Mostrando registros %{from} até %{to} de %{count} no total"
+      multi_page_html: "Mostrando registros %{from} até %{to} de %{count} no total"
   activerecord:
     attributes:
       user:
@@ -9,7 +148,7 @@ pt-BR:
         current_password: Senha atual
         current_sign_in_at: Atualmente logado em
         current_sign_in_ip: IP do acesso atual
-        email: E-mail
+        email: Email
         encrypted_password: Senha criptografada
         failed_attempts: Tentativas sem sucesso
         last_sign_in_at: Último acesso em
@@ -18,7 +157,7 @@ pt-BR:
         password: Senha
         password_confirmation: Confirme sua senha
         remember_created_at: Lembrar criado em
-        remember_me: Lembrar-me
+        remember_me: Lembre-se de mim
         reset_password_sent_at: Resetar senha enviado em
         reset_password_token: Resetar token de senha
         sign_in_count: Contagem de acessos
@@ -33,14 +172,14 @@ pt-BR:
       new:
         resend_confirmation_instructions: Reenviar instruções de confirmação
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
-      send_paranoid_instructions: Se o seu e-mail existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
+      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
     failure:
       already_authenticated: Você já está autenticado.
       inactive: A sua conta ainda não foi ativada.
-      invalid: Inválido %{authentication_keys} ou senha.
+      invalid: Invalido %{authentication_keys} ou senha.
       last_attempt: Você tem mais uma única tentativa antes de sua conta ser bloqueada.
       locked: A sua conta está bloqueada.
-      not_found_in_database: Inválido %{authentication_keys} ou senha.
+      not_found_in_database: Invalido %{authentication_keys} ou senha.
       timeout: A sua sessão expirou, por favor, faça login novamente para continuar.
       unauthenticated: Para continuar, faça login ou registre-se.
       unconfirmed: Antes de continuar, confirme a sua conta.
@@ -84,7 +223,7 @@ pt-BR:
         forgot_your_password: Esqueceu sua senha?
         send_me_reset_password_instructions: Enviar instruções para redefinição da senha
       no_token: Você não pode acessar esta página sem estar logado. Se você veio de um email de redefinição de senha, por favor certifique-se de ter digitado a URL corretamente.
-      send_instructions: Dentro de minutos, você receberá um e-mail com as instruções de redefinição da sua senha.
+      send_instructions: Dentro de minutos, você receberá um email com as instruções de redefinição da sua senha.
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com um link para recuperação da senha.
       updated: A sua senha foi alterada com sucesso. Você está autenticado.
       updated_not_active: Sua senha foi alterada com sucesso.
@@ -105,9 +244,9 @@ pt-BR:
       signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
       signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.
       signed_up_but_unconfirmed: Uma mensagem com um link de confirmação foi enviada para o seu e-mail. Por favor, acesse o link para ativar sua conta.
-      update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu e-mail e clique no link de confirmação para finalizar confirmando o seu novo e-mail.
+      update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu email e clique no link de confirmação para finalizar confirmando o seu novo email.
       updated: A sua conta foi atualizada com sucesso.
-      updated_but_not_signed_in: Sua conta foi atualizada com sucesso, uma vez que sua senha foi alterada será necessário realizar o login novamente.
+      updated_but_not_signed_in:
     sessions:
       already_signed_out: Logout efetuado com sucesso.
       new:
@@ -119,19 +258,19 @@ pt-BR:
         back: Voltar
         didn_t_receive_confirmation_instructions: Não recebeu instruções de confirmação?
         didn_t_receive_unlock_instructions: Não recebeu instruções de desbloqueio?
-        forgot_your_password: Recuperar senha
+        forgot_your_password: Esqueceu sua senha?
         sign_in: Login
         sign_in_with_provider: Entrar com %{provider}
-        sign_up: Registrar-me
+        sign_up: Inscrever-se
       minimum_password_length:
         one: "(Mínimo de %{count} caractere)"
         other: "(Mínimo de %{count} caracteres)"
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instruções de desbloqueio
-      send_instructions: Dentro de minutos, você receberá um e-mail com instruções de desbloqueio da sua conta.
-      send_paranoid_instructions: Se sua conta existir em nosso banco de dados, você receberá em breve um e-mail com instruções para desbloquear ela.
-      unlocked: A sua conta foi desbloqueada com sucesso. Efetue login para continuar.
+      send_instructions: Dentro de minutos, você receberá um email com instruções de desbloqueio da sua conta.
+      send_paranoid_instructions: Se sua conta existir em nosso banco de dados, você receberá em breve um email com instruções para desbloquear ela.
+      unlocked: A sua conta foi desbloqueada com sucesso. Você está autenticado.
   errors:
     messages:
       already_confirmed: já foi confirmado
@@ -142,155 +281,3 @@ pt-BR:
       not_saved:
         one: 'Não foi possível salvar %{resource}: 1 erro'
         other: 'Não foi possível salvar %{resource}: %{count} erros.'
-  admin:
-    js:
-      true: Sim
-      false: Não
-      is_present: Está presente
-      is_blank: Está em branco
-      date: Data …
-      between_and_: Entre … e …
-      today: Hoje
-      yesterday: Ontem
-      this_week: Esta semana
-      last_week: Semana passada
-      number: Número …
-      contains: Contém
-      is_exactly: É exatamente
-      starts_with: Começa com
-      ends_with: Termina com
-      too_many_objects: "Muitos objetos. Use a busca acima."
-      no_objects: "Nenhum objeto encontrado"
-    loading: "Carregando …"
-    toggle_navigation: Alternar navegação
-    home:
-      name: Página inicial
-    pagination:
-      previous: "&laquo; Anterior"
-      next: Próximo &raquo;
-      truncate: …
-    misc:
-      filter_date_format: mm/dd/yy
-      search: Buscar
-      filter: Filtro
-      refresh: Atualizar
-      show_all: Mostrar todos
-      add_filter: Adicionar filtro
-      bulk_menu_title: Itens selecionados
-      remove: Remover
-      add_new: Adicionar novo
-      chosen: "%{name} escolhido"
-      chose_all: Escolher todos
-      clear_all: Limpar todos
-      up: Para cima
-      down: Para baixo
-      navigation: Navegação
-      navigation_static_label: "Links"
-      log_out: Sair
-      ago: Atrás
-      more: "Mais %{count} %{models_name}"
-    flash:
-      successful: "%{name} foi %{action} com sucesso"
-      error: "%{name} falhou ao ser %{action}"
-      noaction: Nenhuma ação foi tomada
-      model_not_found: Modelo '%{model}' não foi encontrado"
-      object_not_found: "%{model} com id '%{id}' não foi encontrado"
-    table_headers:
-      model_name: Nome do modelo
-      last_created: Última entrada
-      last_used: Último acesso
-      records: Entradas
-      username: Usuário
-      changes: Mudanças
-      created_at: Data/Hora
-      item: Item
-      message: Mensagem
-    actions:
-      dashboard:
-        title: Administração do site
-        menu: Dashboard
-        breadcrumb: Dashboard
-      index:
-        title: Lista de %{model_label_plural}
-        menu: Listar
-        breadcrumb: Lista de %{model_label_plural}
-      show:
-        title: Mostra
-        menu: Mostrar
-        breadcrumb: Mostrar "%{object_label}"
-      show_in_app:
-        menu: Mostrar no app
-      new:
-        title: Novo %{model_label}
-        menu: Adicionar novo
-        breadcrumb: Novo
-        link: Adicionar novo %{model_label}
-        done: Adicionado
-      edit:
-        title: Editar %{model_label} '%{object_label}'
-        menu: Editar
-        breadcrumb: Editar
-        link: Editar este %{model_label}
-        done: Atualizado
-      delete:
-        title: Deletar %{model_label} '%{object_label}'
-        menu: Deletar
-        breadcrumb: Deletar
-        link: Deletar '%{object_label}'
-        done: Deletado
-      bulk_delete:
-        title: Deletar %{model_label_plural}
-        menu: Deletar vários
-        breadcrumb: Deletar vários
-        bulk_link: Deletar %{model_label_plural} selecionado
-      export:
-        title: Exportar %{model_label_plural}
-        menu: Exportar
-        breadcrumb: Exportar
-        link: Exportar %{model_label_plural}
-        bulk_link: Exportar %{model_label_plural} selecionados
-        done: Exportado
-      history_index:
-        title: Histórico para %{model_label_plural}
-        menu: Histórico
-        breadcrumb: Histórico
-      history_show:
-        title: Histórico para %{model_label} '%{object_label}'
-        menu: Histórico
-        breadcrumb: Histórico
-    form:
-      cancel: Cancelar
-      basic_info: Informações básicas
-      required: Necessário
-      optional: Opcional
-      one_char: caractere
-      char_length_up_to: Comprimento até
-      char_length_of: Comprimento
-      save: Salvar
-      save_and_add_another: Salvar e adicionar outro
-      save_and_edit: Salvar e editar
-      all_of_the_following_related_items_will_be_deleted: Todos os arquivos selecionados serão excluídos
-      are_you_sure_you_want_to_delete_the_object: Você tem certeza que deseja excluir
-      confirmation: Sim, tenho certeza
-      bulk_delete: "Os seguintes objetos serão excluídos podendo também excluir objetos relacionados ou deixar relacionamentos órfãos"
-      new_model: "%{name} (novo)"
-    export:
-      confirmation: Exportar para %{name}
-      select: Selecione os campos para exportar
-      select_all_fields: Selecionar todos os campos
-      fields_from: Campos de %{name}
-      fields_from_associated: Campos associados a %{name}
-      display: 'Mostrar %{name}: %{type}'
-      options_for: Opções para %{name}
-      empty_value_for_associated_objects: "<vazio>"
-      click_to_reverse_selection: Clique para reverter a seleção
-      csv:
-        header_for_root_methods: "%{name}" # 'model' is available
-        header_for_association_methods: "%{name} [%{association}]"
-        encoding_to: Converter para
-        encoding_to_help: "Escolha o formato de saída. Deixe em branco para não mudar o formato atual: (%{name})"
-        skip_header: Sem cabeçalho
-        skip_header_help: Não incluir o cabeçalho
-        default_col_sep: ","
-        col_sep: Separador de coluna
-        col_sep_help: Deixe em branco para utilizar o padrão ('%{value}') # value is default_col_sep

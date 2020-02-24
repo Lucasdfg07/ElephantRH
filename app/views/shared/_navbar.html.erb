@@ -2,7 +2,9 @@
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-icon"></span>
+    <span class="navbar-icon"></span>
+    <span class="navbar-icon"></span>
   </button>
 
   <section class="collapse navbar-collapse offset-md-4" id="navbarNav">
@@ -18,10 +20,10 @@
       <li class="nav-item col">
         <%= link_to 'Clientes', patient_index_path, class: 'nav_li' %>
       </li>
+
+      <li class="nav-item col">
+        <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => "nav_li"  %>
+      </li>
     </ul>
   </section>
-
-  <li class="nav-item text-right d-inline">
-    <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => "nav_li"  %>
-  </li>
 </nav>

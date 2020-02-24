@@ -1,35 +1,51 @@
 <section class="patient text-center">
   <h3>Listagem de todos os candidatos cadastrados <%= fa_icon "user-circle" %></h3>
 
+  <%= form_tag(patient_index_path, method: :get, class: "form-group")  do %>
+      <section class="row">
+        <%= text_field_tag :search, params[:search], class: "form-control text_form col-md-10 ml-2", placeholder: 'Busque por algum candidato!' %>
+        <%= submit_tag ("Procurar"), class: "form-control button_form col-md-1 ml-2" %>
+      </section>
+      <small>O campo de busca procura por Nome, Empresa, Estado Civil, Escolaridade, Cargo </small>
+  <% end %>
 
   <% @patients.each do |patient| %>
     <section class="card patients-list">
       <section class="row">
-        <section class="col-2">
+        <section class="col-md-2">
           <% if patient.avatar.url.present? %>
             <%= image_tag(patient.avatar.medium.url) %>
           <% end %>
         </section>
 
-        <section class="col-8 pt-3">
+        <section class="col-md-8 pt-3">
           <h3><%= patient.name %></h3>
 
           <% if patient.form.present? %>
             <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
-            <%= link_to 'Visualizar PDF', form_export_path(patient_id: patient, format: :pdf), target: "_blank" %>
-            <%= link_to 'Editar Formulário', form_edit_path(patient_id: patient.form.id) %>
-            <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
-            <%= link_to 'Gráfico', patient_graph_path(patient_id: patient) %>
+            <section class="row">
+              <%= link_to 'Visualizar PDF', form_export_path(patient_id: patient, format: :pdf), class: 'col-lg-3', target: "_blank" %>
+              <%= link_to 'Editar Formulário', form_edit_path(patient_id: patient.form.id), class: 'col-lg-2' %>
+              <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient), class: 'col-lg-2' %>
+              <%= link_to 'Gráfico', patient_graph_path(patient_id: patient), class: 'col-lg-2' %>
+            </section>
           <% else %>
-            <%= link_to 'Preencher Formulário', form_new_path(patient_id: patient.id) %>
-            <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
+            <section class="row">
+              <%= link_to 'Preencher Formulário', form_new_path(patient_id: patient.id), class: 'col-md-5' %>
+              <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient), class: 'col-md-5' %>
+            </section>
           <% end %>
+
         </section>
 
-        <section class="col-2 pt-4 mt-4">
+        <section class="col-md-2 pt-4 mt-4">
           <%= link_to '<i class="fa fa-trash"></i>'.html_safe, {action: :destroy, id: patient.id}, data: { confirm: 'Tem certeza?' }, title: 'Excluir', class: 'delete' %>
         </section>
       </section>
     </section>
   <% end %>
+
+  <br />
+
+  <%= will_paginate @patients %>
 </section>
