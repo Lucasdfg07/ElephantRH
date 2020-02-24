@@ -8,17 +8,15 @@ class FormController < ApplicationController
     @form = Form.find(params[:patient_id])
 
     @count = 0
-    session[:id] = params[:patient_id]
   end
 
   def new
     @form = Form.new
-    session[:id] = params[:id]
   end
 
   def create
     @form = Form.new(form_params)
-    @form.patient_id = session[:id]
+    @form.patient_id = params[:patient_id]
 
     if @form.save
       redirect_to patient_index_path, notice: 'Formulário Salvo com sucesso!'
@@ -28,7 +26,7 @@ class FormController < ApplicationController
   end
 
   def update
-    @form = Form.find(session[:id])
+    @form = Form.find(params[:patient_id])
 
     if @form.update(form_params)
       redirect_to patient_index_path, notice: 'Formulário Atualizado com sucesso!'
