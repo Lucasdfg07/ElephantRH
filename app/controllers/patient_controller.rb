@@ -6,7 +6,7 @@ class PatientController < ApplicationController
         OR lower(marital_status) LIKE :search OR lower(schooling) LIKE :search
         OR lower(office) LIKE :search", search: "%#{params[:search].downcase}%").paginate(page: params[:page], per_page: 10)
     else
-      @patients = current_user.patient.order(name: :ASC).paginate(page: params[:page], per_page: 2)
+      @patients = current_user.patient.order(name: :ASC).paginate(page: params[:page], per_page: 10)
     end
   end
 
