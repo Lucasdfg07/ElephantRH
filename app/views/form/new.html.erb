@@ -1,6 +1,6 @@
 <section class="new_patient text-center">
     <h4>Cadastro do Formulário</h4>
-    <%= form_with(model: @form, url: {action: 'create', id: params[:id]}, class: 'principal-form') do |f| %>
+    <%= form_with(model: @form, url: {action: 'create', patient_id: params[:patient_id]}, class: 'principal-form') do |f| %>
         <section class="card">
           <section class="card-header">
             Dados da Entrevista

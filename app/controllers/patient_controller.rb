@@ -12,7 +12,7 @@ class PatientController < ApplicationController
     @patient.user_id = current_user.id
 
     if @patient.save
-      redirect_to form_new_path(id: @patient.id), notice: 'Candidato Salvo com sucesso!'
+      redirect_to form_new_path(patient_id: @patient.id), notice: 'Candidato Salvo com sucesso!'
     else
       redirect_to patient_index_path, alert: 'Erro ao cadastrar Candidato'
     end
