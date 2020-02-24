@@ -2,7 +2,7 @@ class PatientController < ApplicationController
   def index
     @patients = current_user.patient
 
-    @patient_graph = Patient.find.last
+    @patient_graph = Patient.last
   end
 
   def new
