@@ -2,8 +2,13 @@ nav {
   background-color: #03a9f4;
   height: 45px;
 
+  .navbar-toggler {
+    background-color: rgba(240,240,240,0.7);
+    margin-top: -5px;
+  }
+
   li {
-    margin: 0px 30px;
+    margin: 0px 20px;
   }
 
   a {
@@ -12,5 +17,31 @@ nav {
 
   .active {
     border-bottom: 2px solid #0159a2;
+  }
+
+  @media (max-width: 767.98px) {
+    .navbar-icon {
+      width: 30px;
+      border: 1px solid rgba(245,245,245,0.9);
+      margin-top: 5px;
+      height: 2px;
+      color: white;
+      display: block;
+    }
+    #navbarNav {
+      text-align: center;
+      background-color: rgba(245,245,245,0.9);
+      box-shadow: 0px -2px 10px rgba(10,10,10,0.6);
+      z-index: 9999;
+    }
+
+    #navbarNav li {
+      padding:10px 0px;
+      border-bottom: 1px solid black;
+      margin: 0px;
+    }
+    #navbarNav a {
+      color: black;
+    }
   }
 }
