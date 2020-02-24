@@ -84,6 +84,15 @@ module GeneratePdf
 
       pdf.move_down 40
 
+      table_data = [["<b>Competências Facilitadoras</b>", "<b>Aspectos Limitantes</b>"]]
+
+      @cont = 0
+      patient.form.facilities.each do
+        table_data += [["#{patient.form.facilities[@cont]}", "#{patient.form.dificulties[@cont]}"]]
+        @cont += 1
+      end
+      pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9 })
+
       pdf.move_down 40
 
       pdf.text "PROGNÓSTICO DE DESEMPENHO", :size => 13, :style => :bold

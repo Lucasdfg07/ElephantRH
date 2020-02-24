@@ -1,0 +1,52 @@
+<section class="new_patient text-center">
+    <h4>Gráfico de conceito psicológico</h4>
+
+    <hr />
+
+    <b>Candidato:</b> <%= @patient_individual.name %> <br />
+    <b>Soma Total do Conceito:</b> <%= @patient_concept_sum %>
+
+    <hr />
+
+    <canvas id="myChart"></canvas>
+
+    <%= javascript_tag do %>
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      var data = {
+        labels: ["Comunicação", "Trabalho em Equipe", "Relacionamento",
+        "Organização", "Adaptação", "Trabalho sob pressão", "Proatividade",
+        "Iniciativa", "Dinamismo"],
+        datasets: [{
+          <% if @patient_concept_sum > 19 %>
+            backgroundColor: "rgba(10,200,10,0.3)",
+          <% else %>
+            backgroundColor: "rgba(200,10,10,0.3)",
+          <% end %>
+          data: <%= @patient_graph %>
+        }]
+      };
+
+      options = {
+        scale: {
+            angleLines: {
+                display: false
+            },
+            ticks: {
+                suggestedMin: 0,
+                suggestedMax: 3
+            }
+        }
+      };
+
+
+      var myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: options
+      });
+    <% end %>
+
+    <br />
+    <%= link_to 'Voltar', patient_index_path, class: 'btn btn-warning' %>
+</section>

@@ -11,4 +11,4 @@ $(document).on 'turbolinks:load', ->
       '</tr>')
 
 @remove = (id) ->
-  $('#'+id).hide();
+  $('#'+id).remove();
