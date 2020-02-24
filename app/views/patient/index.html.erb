@@ -13,18 +13,23 @@
 
         <section class="col-8 pt-3">
           <h3><%= patient.name %></h3>
-          <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
 
-          <%= link_to 'Visualizar PDF', form_export_path(patient_id: patient, format: :pdf), target: "_blank" %>
-          <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
+          <% if patient.form.present? %>
+            <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
+            <%= link_to 'Visualizar PDF', form_export_path(patient_id: patient, format: :pdf), target: "_blank" %>
+            <%= link_to 'Editar Formulário', form_edit_path(patient_id: patient.form.id) %>
+            <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
+            <%= link_to 'Gráfico', patient_graph_path(patient_id: patient) %>
+          <% else %>
+            <%= link_to 'Preencher Formulário', form_new_path(id: patient.id) %>
+            <%= link_to 'Editar Perfil', patient_edit_path(patient_id: patient) %>
+          <% end %>
         </section>
 
         <section class="col-2 pt-4 mt-4">
-          <%= link_to '<i class="fa fa-trash"></i>'.html_safe, patient_path(patient), method: :delete, data: { confirm: 'Tem certeza?' }, title: 'Excluir', class: 'delete' %>
+          <%= link_to '<i class="fa fa-trash"></i>'.html_safe, {action: :destroy, id: patient.id}, data: { confirm: 'Tem certeza?' }, title: 'Excluir', class: 'delete' %>
         </section>
       </section>
     </section>
   <% end %>
-
-  <canvas id="myChart"></canvas>
 </section>

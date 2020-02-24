@@ -5,6 +5,10 @@ class FormController < ApplicationController
   end
 
   def edit
+    @form = Form.find(params[:patient_id])
+
+    @count = 0
+    session[:id] = params[:patient_id]
   end
 
   def new
@@ -20,6 +24,16 @@ class FormController < ApplicationController
       redirect_to patient_index_path, notice: 'Formulário Salvo com sucesso!'
     else
       redirect_to patient_index_path, alert: 'Erro ao cadastrar formulário'
+    end
+  end
+
+  def update
+    @form = Form.find(session[:id])
+
+    if @form.update(form_params)
+      redirect_to patient_index_path, notice: 'Formulário Atualizado com sucesso!'
+    else
+      redirect_to patient_index_path, alert: 'Erro na atualização do Formulário!'
     end
   end
 

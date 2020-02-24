@@ -1,8 +1,6 @@
 class PatientController < ApplicationController
   def index
     @patients = current_user.patient
-
-    @patient_graph = Patient.last
   end
 
   def new
@@ -20,7 +18,14 @@ class PatientController < ApplicationController
     end
   end
 
+  def graph
+    @patient_individual = Patient.find(params[:patient_id])
+    @patient_graph = @patient_individual.form.psicological_concepts
+    @patient_concept_sum = @patient_individual.form.psicological_concepts.sum
+  end
+
   def edit
+    @patient = Patient.find(params[:patient_id])
   end
 
   def update
@@ -34,7 +39,6 @@ class PatientController < ApplicationController
   end
 
   def show
-    @patient = Patient.find(params[:patient_id])
   end
 
   def destroy
