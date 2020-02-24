@@ -1,6 +1,8 @@
 class PatientController < ApplicationController
   def index
     @patients = current_user.patient
+
+    @patient_graph = Patient.find.last
   end
 
   def new
@@ -23,7 +25,7 @@ class PatientController < ApplicationController
 
   def update
     @patient = Patient.find(params[:patient_id])
-    
+
     if @patient.update(patient_params)
       redirect_to patient_index_path, notice: 'Candidato Atualizado com sucesso!'
     else

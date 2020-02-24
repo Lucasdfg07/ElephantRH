@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.string "interests"
     t.string "conclusions"
     t.string "intelectual_map", default: [], array: true
+    t.string "personalities_characteristics", default: [], array: true
     t.string "facilities", default: [], array: true
     t.string "dificulties", default: [], array: true
-    t.string "psicological_concepts", default: [], array: true
+    t.integer "psicological_concepts", default: [], array: true
     t.string "performance_diagnostic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.string "company"
     t.string "marital_status"
     t.string "schooling"
-    t.string "age"
+    t.integer "age"
     t.string "office"
     t.index ["form_id"], name: "index_patients_on_form_id"
     t.index ["user_id"], name: "index_patients_on_user_id"

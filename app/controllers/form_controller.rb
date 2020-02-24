@@ -1,4 +1,6 @@
 class FormController < ApplicationController
+  require './app/views/pdf/generate_pdf'
+
   def index
   end
 
@@ -21,9 +23,16 @@ class FormController < ApplicationController
     end
   end
 
+  def export
+    @patient = Patient.find(params[:patient_id])
+
+    pdf = GeneratePdf::patient(@patient)
+    send_data pdf.render, filename: 'relatorio.pdf', type: 'application/pdf', disposition: 'inline'
+  end
+
   private
 
   def form_params
-    params.require(:form).permit(:personal_moment, :profissional_moment, :interests, :conclusions, :performance_diagnostic, intelectual_map: [], facilities: [], dificulties: [], psicological_concepts: [])
+    params.require(:form).permit(:personal_moment, :profissional_moment, :interests, :conclusions, :performance_diagnostic, personalities_characteristics: [],  intelectual_map: [], facilities: [], dificulties: [], psicological_concepts: [])
   end
 end

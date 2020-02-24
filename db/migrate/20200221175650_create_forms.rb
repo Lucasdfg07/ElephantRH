@@ -7,9 +7,10 @@ class CreateForms < ActiveRecord::Migration[5.2]
       t.string :interests
       t.string :conclusions
       t.string :intelectual_map, array: true, default: []
+      t.string :personalities_characteristics, array: true, default: []
       t.string :facilities, array: true, default: []
       t.string :dificulties, array: true, default: []
-      t.string :psicological_concepts, array: true, default: []
+      t.integer :psicological_concepts, array: true, default: []
       t.string :performance_diagnostic
       t.timestamps
     end

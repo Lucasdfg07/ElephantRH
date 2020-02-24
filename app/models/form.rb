@@ -3,8 +3,7 @@ class Form < ApplicationRecord
   # :interests, :conclusions, :performance_diagnostic
 
   validates :personal_moment, :profissional_moment,
-  :interests, :conclusions, :performance_diagnostic, presence: false
-
-  validates :intelectual_map, :facilities,
-  :dificulties, :psicological_concepts, presence: false
+  :interests, :personalities_characteristics, :conclusions,
+   :performance_diagnostic, :intelectual_map, :facilities,
+   :dificulties, :psicological_concepts, presence: false
 end
