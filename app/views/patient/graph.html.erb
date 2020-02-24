@@ -14,9 +14,9 @@
       var ctx = document.getElementById('myChart').getContext('2d');
 
       var data = {
-        labels: ["Comunicação", "Trabalho em Equipe", "Relacionamento",
+        labels: ["Dinamismo", "Comunicação", "Trabalho em Equipe", "Relacionamento",
         "Organização", "Adaptação", "Trabalho sob pressão", "Proatividade",
-        "Iniciativa", "Dinamismo"],
+        "Iniciativa"],
         datasets: [{
           <% if @patient_concept_sum > 19 %>
             backgroundColor: "rgba(10,200,10,0.3)",
