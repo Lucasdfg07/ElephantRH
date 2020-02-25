@@ -117,6 +117,8 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gruff (0.7.0)
+      rmagick (~> 2.13, >= 2.13.4)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
@@ -234,6 +236,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rmagick (2.16.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -328,6 +331,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   font-awesome-rails
+  gruff
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
