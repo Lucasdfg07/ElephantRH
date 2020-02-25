@@ -18,6 +18,8 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-sass'
 
+gem 'dotenv-rails'
+
 # Gem to generate PDF
 gem 'prawn-rails'
 # Gem to generate graphs
