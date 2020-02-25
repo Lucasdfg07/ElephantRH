@@ -7,11 +7,15 @@ module GeneratePdf
     # Define o formato do layout como portrait (poderia ser landscape)
     :page_layout => :portrait,
     # Define a margem do documento
-    :margin      => [40, 75]
+    :margin      => [120, 75],
+
+    :background => "#{Rails.root.to_s}/app/assets/images/timbrado.png"
   }
 
   def self.patient patient
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
+      # image = "#{Rails.root.to_s}/app/assets/images/papel.jpg"
+      # pdf.image image
       # Define a cor do traçado
       pdf.fill_color "666666"
       # Cria um texto com tamanho 30 PDF Points, bold alinha no centro
