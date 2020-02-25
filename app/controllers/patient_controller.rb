@@ -28,6 +28,7 @@ class PatientController < ApplicationController
   def graph
     @patient_individual = Patient.find(params[:patient_id])
     @patient_graph = @patient_individual.form.psicological_concepts
+    
     @patient_concept_sum = @patient_individual.form.psicological_concepts.sum
   end
 

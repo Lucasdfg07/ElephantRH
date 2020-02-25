@@ -1,4 +1,5 @@
 require 'prawn'
+require 'gruff'
 
 module GeneratePdf
   PDF_OPTIONS = {
@@ -13,6 +14,35 @@ module GeneratePdf
   }
 
   def self.patient patient
+
+    g = Gruff::Net.new
+    g.title = 'Gráfico de conceito psicológico'
+    g.labels = { 0 => 'Dinamismo', 1 => 'Comunicação', 2 => 'Trabalho em Equipe', 3 => 'Relacionamento', 4 => 'Organização',
+                 5 => 'Adaptação', 6 => 'Trabalho sob pressão', 7 => 'Proatividade', 8 => 'Iniciativa' }
+    g.hide_legend = true
+    g.marker_font_size = 16
+
+    # Escolhe as cores que serão usadas
+    if (patient.form.psicological_concepts.sum > 19)
+      g.theme = {
+       :colors => ['#aedaa9', '#12a702'],
+       :marker_color => '#dddddd',
+       :font_color => 'black',
+       :background_colors => 'white'
+      }
+    else
+      g.theme = {
+       :colors => ['#EC5A3B', '#12a702'],
+       :marker_color => '#dddddd',
+       :font_color => 'black',
+       :background_colors => 'white'
+      }
+    end
+
+    g.data('Conceito', patient.form.psicological_concepts)
+
+    g.write('public/radar_graph.png')
+
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       # image = "#{Rails.root.to_s}/app/assets/images/papel.jpg"
       # pdf.image image
@@ -57,7 +87,7 @@ module GeneratePdf
       pdf.text "Conclusões da Entrevista", :size => 10, :style => :bold
       pdf.text "#{patient.form.conclusions}", :size => 9
 
-      pdf.move_down 40
+      pdf.move_down 220
 
       pdf.text "ÁREA INTELECTUAL", :size => 13, :style => :bold
       pdf.horizontal_line 0, 450
@@ -80,9 +110,9 @@ module GeneratePdf
 
       pdf.move_down 10
 
-      table_data = [["<b>Organização</b>", "#{patient.form.personalities_characteristics[0]}", "<b>Adaptação</b>", "#{patient.form.personalities_characteristics[1]}", "<b>Iniciativa</b>", "#{patient.form.personalities_characteristics[2]}"],
-      ["<b>Relacionamento</b>", "#{patient.form.personalities_characteristics[3]}", "<b>Trabalho sob Pressão</b>", "#{patient.form.personalities_characteristics[4]}", "<b>Dinamismo</b>", "#{patient.form.personalities_characteristics[5]}"],
-      ["<b>Comunicação</b>", "#{patient.form.personalities_characteristics[6]}", "<b>Proatividade</b>", "#{patient.form.personalities_characteristics[7]}", "<b>Trabalho Equipe</b>", "#{patient.form.personalities_characteristics[8]}"]]
+      table_data = [["<b>Organização</b>", "#{patient.form.psicological_concepts[0]}", "<b>Adaptação</b>", "#{patient.form.psicological_concepts[1]}", "<b>Iniciativa</b>", "#{patient.form.psicological_concepts[2]}"],
+      ["<b>Relacionamento</b>", "#{patient.form.psicological_concepts[3]}", "<b>Trabalho sob Pressão</b>", "#{patient.form.psicological_concepts[4]}", "<b>Dinamismo</b>", "#{patient.form.psicological_concepts[5]}"],
+      ["<b>Comunicação</b>", "#{patient.form.psicological_concepts[6]}", "<b>Proatividade</b>", "#{patient.form.psicological_concepts[7]}", "<b>Trabalho Equipe</b>", "#{patient.form.psicological_concepts[8]}"]]
 
       pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9, align: :center })
 
@@ -96,6 +126,23 @@ module GeneratePdf
         @cont += 1
       end
       pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9 })
+
+      pdf.move_down 40
+
+      pdf.text "QUALIDADES E SEUS CONCEITOS", :size => 13, :style => :bold
+      pdf.horizontal_line 0, 450
+
+      pdf.move_down 10
+
+      table_data = [['Dinamismo',"#{patient.form.psicological_concepts[0]}", 'Comunicação',"#{patient.form.psicological_concepts[1]}", 'Trabalho em Equipe', "#{patient.form.psicological_concepts[2]}"],
+      ['Relacionamento',"#{patient.form.psicological_concepts[3]}", 'Organização',"#{patient.form.psicological_concepts[4]}", 'Adaptação', "#{patient.form.psicological_concepts[5]}"],
+      ['Trabalho sob pressão',"#{patient.form.psicological_concepts[6]}", 'Proatividade', "#{patient.form.psicological_concepts[7]}", 'Iniciativa', "#{patient.form.psicological_concepts[8]}"]]
+
+      pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9 })
+
+      pdf.move_down 40
+
+      pdf.image "public/radar_graph.png", :scale => 0.50
 
       pdf.move_down 40
 

@@ -20,6 +20,9 @@ gem 'bootstrap-sass'
 
 gem 'dotenv-rails'
 
+# chart in PDF
+gem 'gruff'
+
 # Gem to generate PDF
 gem 'prawn-rails'
 # Gem to generate graphs
