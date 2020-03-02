@@ -103,20 +103,20 @@ module GeneratePdf
       pdf.move_down 10
       pdf.text "<b>S</b> – Superior     <b>MS</b> – Médio Superior     <b>M</b> – Médio   <b>MI</b> – Médio Inferior    <b>I</b> – Inferior", :size => 10, :style => :bold, :align => :center, :inline_format => true
 
-      pdf.move_down 40
+      pdf.move_down 80
 
       pdf.text "CARACTERÍSTICAS DA PERSONALIDADE", :size => 13, :style => :bold
       pdf.horizontal_line 0, 450
 
       pdf.move_down 10
 
-      table_data = [["<b>Organização</b>", "#{patient.form.psicological_concepts[0]}", "<b>Adaptação</b>", "#{patient.form.psicological_concepts[1]}", "<b>Iniciativa</b>", "#{patient.form.psicological_concepts[2]}"],
-      ["<b>Relacionamento</b>", "#{patient.form.psicological_concepts[3]}", "<b>Trabalho sob Pressão</b>", "#{patient.form.psicological_concepts[4]}", "<b>Dinamismo</b>", "#{patient.form.psicological_concepts[5]}"],
-      ["<b>Comunicação</b>", "#{patient.form.psicological_concepts[6]}", "<b>Proatividade</b>", "#{patient.form.psicological_concepts[7]}", "<b>Trabalho Equipe</b>", "#{patient.form.psicological_concepts[8]}"]]
+      table_data = [["<b>Organização</b>", "#{patient.form.personalities_characteristics[0]}", "<b>Adaptação</b>", "#{patient.form.personalities_characteristics[1]}", "<b>Iniciativa</b>", "#{patient.form.personalities_characteristics[2]}"],
+      ["<b>Relacionamento</b>", "#{patient.form.personalities_characteristics[3]}", "<b>Trabalho sob Pressão</b>", "#{patient.form.personalities_characteristics[4]}", "<b>Dinamismo</b>", "#{patient.form.personalities_characteristics[5]}"],
+      ["<b>Comunicação</b>", "#{patient.form.personalities_characteristics[6]}", "<b>Proatividade</b>", "#{patient.form.personalities_characteristics[7]}", "<b>Trabalho Equipe</b>", "#{patient.form.personalities_characteristics[8]}"]]
 
       pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9, align: :center })
 
-      pdf.move_down 40
+      pdf.move_down 80
 
       table_data = [["<b>Competências Facilitadoras</b>", "<b>Aspectos Limitantes</b>"]]
 
@@ -125,19 +125,6 @@ module GeneratePdf
         table_data += [["#{patient.form.facilities[@cont]}", "#{patient.form.dificulties[@cont]}"]]
         @cont += 1
       end
-      pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9 })
-
-      pdf.move_down 40
-
-      pdf.text "QUALIDADES E SEUS CONCEITOS", :size => 13, :style => :bold
-      pdf.horizontal_line 0, 450
-
-      pdf.move_down 10
-
-      table_data = [['Dinamismo',"#{patient.form.psicological_concepts[0]}", 'Comunicação',"#{patient.form.psicological_concepts[1]}", 'Trabalho em Equipe', "#{patient.form.psicological_concepts[2]}"],
-      ['Relacionamento',"#{patient.form.psicological_concepts[3]}", 'Organização',"#{patient.form.psicological_concepts[4]}", 'Adaptação', "#{patient.form.psicological_concepts[5]}"],
-      ['Trabalho sob pressão',"#{patient.form.psicological_concepts[6]}", 'Proatividade', "#{patient.form.psicological_concepts[7]}", 'Iniciativa', "#{patient.form.psicological_concepts[8]}"]]
-
       pdf.table(table_data,:header => true, :width => 450, :cell_style => { :inline_format => true, size: 9 })
 
       pdf.move_down 40
