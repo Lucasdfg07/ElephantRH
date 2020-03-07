@@ -19,27 +19,37 @@ module GeneratePdf
     g.title = 'Gráfico de conceito psicológico'
     g.labels = { 0 => 'Dinamismo', 1 => 'Comunicação', 2 => 'Trabalho em Equipe', 3 => 'Relacionamento', 4 => 'Organização',
                  5 => 'Adaptação', 6 => 'Trabalho sob pressão', 7 => 'Proatividade', 8 => 'Iniciativa' }
-    g.hide_legend = true
+
+    g.legend_margin = 45
+
     g.marker_font_size = 16
 
     # Escolhe as cores que serão usadas
     if (patient.form.psicological_concepts.sum > 19)
       g.theme = {
-       :colors => ['#aedaa9', '#12a702'],
+       :colors => ['#aedaa9', '#64BFF7', '#E7F2F9'],
        :marker_color => '#dddddd',
        :font_color => 'black',
        :background_colors => 'white'
       }
     else
       g.theme = {
-       :colors => ['#EC5A3B', '#12a702'],
+       :colors => ['#EC5A3B', '#64BFF7', '#E7F2F9'],
        :marker_color => '#dddddd',
        :font_color => 'black',
        :background_colors => 'white'
       }
     end
 
-    g.data('Conceito', patient.form.psicological_concepts)
+    @datasets = [
+      [:Paciente, patient.form.psicological_concepts],
+      [:Recomendado, [2,2,2,3,3,2,2,2,2]],
+      [:Origem, [0,0,0,0,0,0,0,0,0]]
+      ]
+
+    @datasets.each do |data|
+      g.data(data[0], data[1], data[2])
+    end
 
     g.write('public/radar_graph.png')
 
