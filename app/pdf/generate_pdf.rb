@@ -16,7 +16,7 @@ module GeneratePdf
   def self.patient patient
 
     g = Gruff::Net.new
-    g.title = 'Gráfico de conceito psicológico'
+    g.title = 'Mapeamento da Personalidade'
     g.labels = { 0 => 'Dinamismo', 1 => 'Comunicação', 2 => 'Trabalho em Equipe', 3 => 'Relacionamento', 4 => 'Organização',
                  5 => 'Adaptação', 6 => 'Trabalho sob pressão', 7 => 'Proatividade', 8 => 'Iniciativa' }
 
@@ -44,7 +44,7 @@ module GeneratePdf
     @datasets = [
       [:Paciente, patient.form.psicological_concepts],
       [:Recomendado, [2,2,2,3,3,2,2,2,2]],
-      [:Origem, [0,0,0,0,0,0,0,0,0]]
+      [:Características, [0,0,0,0,0,0,0,0,0]]
       ]
 
     @datasets.each do |data|
