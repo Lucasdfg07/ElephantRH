@@ -2,7 +2,7 @@
 ![Logo of the project](https://github.com/Lucasdfg07/ElephantRH/blob/master/app/assets/images/logo.png)
 
 
-## Ruby Web Crawler 
+## Elephant RH 
 This application is ruby app to psychologist's public. Registering patients and your consultations.
 
 
