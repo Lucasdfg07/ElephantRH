@@ -3,7 +3,7 @@
 
     <hr />
 
-    <b>Candidato:</b> <%= @patient_individual.name %> <br />
+    <b>Candidato:</b> <%= @patient.name %> <br />
     <b>Soma Total do Conceito:</b> <%= @patient_concept_sum %>
 
     <hr />
@@ -48,5 +48,5 @@
     <% end %>
 
     <br />
-    <%= link_to 'Voltar', patient_index_path, class: 'btn btn-warning' %>
+    <%= link_to 'Voltar', patients_path, class: 'btn btn-warning' %>
 </section>

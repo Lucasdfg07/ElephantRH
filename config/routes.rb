@@ -4,27 +4,18 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  get 'patient/index'
-  get 'patient/new'
-  get 'patient/destroy'
-  get 'patient/edit'
-  get 'patient/show'
-  get 'patient/graph'
+  resources :patients do
+    collection do
+      get 'graph'
+    end
+  end
 
-  post 'patient/create'
-  post 'patient/update'
-  post 'patient/destroy'
-
-
-  get 'form/index'
-  get 'form/new'
-  get 'form/edit'
-  get 'form/export'
-
-  post 'form/create'
-  get 'form/update'
-  post 'form/update'
-  post 'form/export'
+  resources :forms do
+    collection do 
+      get 'export'
+      post 'export'
+    end
+  end
 
 
   get 'pdf/generate_pdf'

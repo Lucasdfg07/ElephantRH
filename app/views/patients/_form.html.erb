@@ -1,8 +1,5 @@
-<section class="new_patient text-center">
-    <h4>Edição de um Cliente</h4>
-
-    <%= form_with(model: @patient, url: {action: 'update', patient_id: params[:patient_id]}, :method => :POST) do |f| %>
-      <section class="card">
+<%= form_for(patient) do |f| %>
+  <section class="card">
         <section class="card-header">
           Identificação do Candidato
         </section>
@@ -11,45 +8,43 @@
           <section class="row">
             <section class="col-6">
               Empresa <br />
-              <%= f.text_field :company, value: @patient.company  %>
+              <%= f.text_field :company %>
             </section>
 
             <section class="col-6">
               Estado Civil* <br />
-              <%= f.text_field :marital_status, value: @patient.marital_status %>
+              <%= f.text_field :marital_status, required: true %>
             </section>
 
             <section class="col-6">
               Nome do Candidato* <br />
-              <%= f.text_field :name, value: @patient.name %>
+              <%= f.text_field :name, required: true %>
             </section>
 
             <section class="col-6">
               Escolaridade* <br />
-              <%= f.text_field :schooling, value: @patient.schooling %>
+              <%= f.text_field :schooling, required: true %>
             </section>
 
             <section class="col-6">
               Idade* <br />
-              <%= f.number_field :age, min: 0, value: @patient.age %>
+              <%= f.number_field :age, min: 0, required: true %>
             </section>
 
             <section class="col-6">
               Cargo <br />
-              <%= f.text_field :office, value: @patient.office %>
+              <%= f.text_field :office %>
             </section>
           </section>
 
 
           <section class="inferior-buttons">
             <%= f.file_field :avatar, class: 'photo' %>
+
             <br />
+
             <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
-            <br />
-            <br />
-            <%= link_to 'Voltar', :back, class: 'btn btn-warning save' %>
           </section>
         </section>
       </section>
-    <% end %>
-</section>
+<% end %>

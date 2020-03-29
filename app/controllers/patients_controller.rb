@@ -1,4 +1,6 @@
-class PatientController < ApplicationController
+class PatientsController < ApplicationController
+  before_action :set_patient, only: [:show, :edit, :update, :destroy, :graph]
+
   def index
     if params[:search].present?
       @patients = current_user.patient.order(name: :ASC).
@@ -19,30 +21,26 @@ class PatientController < ApplicationController
     @patient.user_id = current_user.id
 
     if @patient.save
-      redirect_to form_new_path(patient_id: @patient.id), notice: 'Candidato Salvo com sucesso!'
+      redirect_to patients_path, notice: 'Candidato Salvo com sucesso!'
     else
-      redirect_to patient_index_path, alert: 'Erro ao cadastrar Candidato'
+      redirect_to patients_path, alert: 'Erro ao cadastrar Candidato'
     end
   end
 
   def graph
-    @patient_individual = Patient.find(params[:patient_id])
-    @patient_graph = @patient_individual.form.psicological_concepts
+    @patient_graph = @patient.form.psicological_concepts
 
-    @patient_concept_sum = @patient_individual.form.psicological_concepts.sum
+    @patient_concept_sum = @patient.form.psicological_concepts.sum
   end
 
   def edit
-    @patient = Patient.find(params[:patient_id])
   end
 
   def update
-    @patient = Patient.find(params[:patient_id])
-
     if @patient.update(patient_params)
-      redirect_to patient_index_path, notice: 'Candidato Atualizado com sucesso!'
+      redirect_to patients_path, notice: 'Candidato Atualizado com sucesso!'
     else
-      redirect_to patient_index_path, alert: 'Erro na atualização do Candidato!'
+      redirect_to patients_path, alert: 'Erro na atualização do Candidato!'
     end
   end
 
@@ -50,17 +48,19 @@ class PatientController < ApplicationController
   end
 
   def destroy
-    @patient = Patient.find(params[:id])
-
     if @patient.destroy
-      redirect_to patient_index_path, notice: 'Cliente removido com sucesso!'
+      redirect_to patients_path, notice: 'Cliente removido com sucesso!'
     else
-      redirect_to patient_index_path, alert: 'Erro na remoção do cliente!'
+      redirect_to patients_path, alert: 'Erro na remoção do cliente!'
     end
   end
 
 
   private
+
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
 
   def patient_params
     params.require(:patient).permit(:company, :marital_status, :name, :schooling, :age, :office, :avatar)

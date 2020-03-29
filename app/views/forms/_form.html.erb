@@ -1,6 +1,8 @@
 <section class="new_patient text-center">
-    <h4>Cadastro do Formulário</h4>
-    <%= form_with(model: @form, url: {action: 'update', patient_id: params[:patient_id]}, :method => :POST, class: 'principal-form') do |f| %>
+    <%= form_for(form) do |f| %>
+
+        <%= hidden_field_tag :id, params[:id] %>
+        
         <section class="card">
           <section class="card-header">
             Dados da Entrevista
@@ -10,22 +12,22 @@
             <section class="row">
               <section class="col-6">
                 Momento Pessoal <br />
-                <%= f.text_area :personal_moment, value: @form.personal_moment, required: true %>
+                <%= f.text_area :personal_moment, required: true %>
               </section>
 
               <section class="col-6">
                 Momento Profissional <br />
-                <%= f.text_area :profissional_moment, value: @form.profissional_moment, required: true %>
+                <%= f.text_area :profissional_moment, required: true %>
               </section>
 
               <section class="col-6">
                 Autopercepção e Interesses <br />
-                <%= f.text_area :interests, value: @form.interests, required: true %>
+                <%= f.text_area :interests, required: true %>
               </section>
 
               <section class="col-6">
                 Conclusões da Entrevista <br />
-                <%= f.text_area :conclusions, value: @form.conclusions, required: true %>
+                <%= f.text_area :conclusions, required: true %>
               </section>
             </section>
           </section>
@@ -48,22 +50,22 @@
               <tbody>
                 <tr>
                   <td>Potencial Intelectual</td>
-                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[0] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[0], multiple: true, required: true %></td>
                 </tr>
 
                 <tr>
                   <td>Atenção Concentrada</td>
-                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[1] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[1], multiple: true, required: true %></td>
                 </tr>
 
                 <tr>
                   <td>Atenção Difusa</td>
-                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[2] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[2], multiple: true, required: true %></td>
                 </tr>
 
                 <tr>
                   <td>Habilidade  Numérica</td>
-                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[3] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :intelectual_map, value: @form.intelectual_map[3], multiple: true, required: true %></td>
                 </tr>
               </tbody>
             </table>
@@ -90,29 +92,29 @@
               <tbody>
                 <tr>
                   <td>Organização</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[0] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[0], multiple: true, required: true %></td>
                   <td>Adaptação</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[1] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[1], multiple: true, required: true %></td>
                   <td>Iniciativa</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[2] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[2], multiple: true, required: true %></td>
                 </tr>
 
                 <tr>
                   <td>Relacionamento</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[3] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[3], multiple: true, required: true %></td>
                   <td>Trabalho sob Pressão</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[4] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[4], multiple: true, required: true %></td>
                   <td>Dinamismo</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[5] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[5], multiple: true, required: true %></td>
                 </tr>
 
                 <tr>
                   <td>Comunicação</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[6] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[6], multiple: true, required: true %></td>
                   <td>Proatividade</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[7] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[7], multiple: true, required: true %></td>
                   <td>Trabalho Equipe</td>
-                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[8] , multiple: true, required: true %></td>
+                  <td><%= f.text_field :personalities_characteristics, value: @form.personalities_characteristics[8], multiple: true, required: true %></td>
                 </tr>
               </tbody>
             </table>
@@ -140,14 +142,11 @@
               </thead>
 
               <tbody>
-                <% @form.facilities.each do %>
-                  <tr id="0">
-                    <td><%= f.text_field :facilities, value: @form.facilities[@count] , multiple: true, required: true %></td>
-                    <td><%= f.text_field :dificulties, value: @form.dificulties[@count] , multiple: true, required: true %></td>
-                    <td><div class="remove-aspects" onclick="remove(0)"><i class="fa fa-times"></i></div></td>
-                  </tr>
-                  <div class="d-none"><%= @count += 1 %></div>
-                <% end %>
+                <tr id="0">
+                  <td><%= f.text_field :facilities, multiple: true, required: true %></td>
+                  <td><%= f.text_field :dificulties, multiple: true, required: true %></td>
+                  <td><div class="remove-aspects" onclick="remove(0)"><i class="fa fa-times"></i></div></td>
+                </tr>
               </tbody>
             </table>
 
@@ -224,12 +223,16 @@
         <section class="card">
           <section class="card-body">
             Diagnóstico de Desempenho <br />
-            <%= f.text_area :performance_diagnostic, value: @form.performance_diagnostic, required: true %>
+            <%= f.text_area :performance_diagnostic, required: true %>
           </section>
         </section>
 
         <br />
 
         <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
+
+        <br />
+        
+        <%= link_to 'Voltar', patients_path, class: 'btn btn-warning m-3' %>
     <% end %>
 </section>
