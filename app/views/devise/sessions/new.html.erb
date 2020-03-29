@@ -32,11 +32,19 @@
     <% end %>
 
     <section class="actions">
-      <%= f.submit t('.sign_in'), class: 'btn btn-success' %>
+      <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
     </section>
   <% end %>
 
-  <section class="row buttons_shared">
-    <%= render "devise/shared/links" %>
+  <br />
+    
+  <section class="actions">
+    <%= link_to 'Registrar-se', new_user_registration_path, class: 'btn btn-success' %>
+  </section>
+
+  <br />
+
+  <section class="actions">
+    <%= link_to 'Esqueceu sua senha?', new_user_password_path, class: 'btn btn-dark' %>
   </section>
 </section>
