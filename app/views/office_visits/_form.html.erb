@@ -1,4 +1,4 @@
-<%= form_with(model: office_visit, local: true) do |form| %>
+<%= form_with(model: office_visit, local: true, class: 'col-md-4 offset-md-4') do |form| %>
   
   <p>
     Paciente: <b><%= @patient.name %></b>
@@ -20,5 +20,5 @@
     <%= form.submit 'Salvar', class: 'btn btn-info' %>
   </div>
 
-  <%= link_to 'Voltar', office_visits_path(id_patient: params[:id_patient]), class: 'btn btn-warning m-4' %>
+  <%= link_to 'Voltar', :back, class: 'btn btn-warning m-4' %>
 <% end %>

@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   resources :patients do
     collection do
       get 'graph'
+      get 'validation'
     end
   end
+
+  patch 'validate', to: 'patients#validate'
 
   resources :forms do
     collection do 

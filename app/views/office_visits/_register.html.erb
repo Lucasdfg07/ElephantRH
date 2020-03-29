@@ -1,0 +1,31 @@
+<%= form_with(model: office_visit, local: true) do |form| %>
+  
+  <p>
+    Paciente: <b><%= @patient.name %></b>
+  </p>
+
+  <%= hidden_field_tag :id_patient, params[:id_patient] %>
+  
+  <section class="row">
+    <section class="form-group col-md-4">
+        <section class="row date_div">
+          <%= form.text_field :date, type: 'date', required: true, class: 'form-control col-6' %>
+          <%= form.text_field :hour, type: 'time', required: true, class: 'form-control col-6' %>
+        </section>
+
+        <div class="actions mt-4 mb-4">
+          <%= form.submit 'Salvar', class: 'btn btn-info' %>
+        </div>
+
+        <% if params[:register].present? %>
+          <%= link_to 'Voltar', patients_path, class: 'btn btn-warning' %>
+        <% else %>
+          <%= link_to 'Voltar', office_visits_path(id_patient: params[:id_patient]), class: 'btn btn-warning' %>
+        <% end %>
+    </section>
+
+    <section class="calendar col-md-8">
+      <%= render 'calendar/show' %>
+    </section>
+  </section>
+<% end %>

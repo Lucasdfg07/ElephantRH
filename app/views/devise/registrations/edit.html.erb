@@ -39,6 +39,11 @@
       </div>
     </section>
 
+    <div class="field text-center col-md-4 offset-md-4">
+      <%= f.label :categoria %><br />
+      <%= f.select :category, [:Empresa, :Autônomo], {include_blank: 'Selecione'}, class: 'form-control', required: true %>
+    </div>
+
     <div class="actions text-center mt-4">
       <%= f.submit t('.update'), class: 'btn btn-info' %>
     </div>

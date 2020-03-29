@@ -20,6 +20,10 @@
   }
 }
 
+.date_div {
+  margin-top: 100px;  
+}
+
 .new_patient {
   .card {
     margin-top: 50px;
@@ -85,11 +89,5 @@
     .save {
       width: 150px;
     }
-  }
-}
-
-.pagination {
-  a, span {
-    padding: 0px 10px;
   }
 }

@@ -1,7 +1,7 @@
 class OfficeVisit < ApplicationRecord
   belongs_to :patient
 
-  validates_presence_of :description
+  validates :hour, :date, presence: false
 
   mount_uploaders :documents, DocumentUploader
 end

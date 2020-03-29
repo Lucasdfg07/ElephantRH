@@ -1,0 +1,40 @@
+.calendar {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    font-family: "Lucida Grande", arial, helvetica, sans-serif;
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid rgba(200,200,200,0.7);
+  }
+
+  th {
+    background: rgba(10,10,230,0.6);
+    color: white;
+    text-align: center;
+  }
+
+  td {
+    background: #FFF;
+    color: #777;
+    height: 80px;
+    vertical-align: top;
+    font-size: 16px;
+  }
+
+  .notmonth { color: #CCC; }
+  .today { background-color: #D7F2FF; }
+
+  #month {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  ul li {
+    display: block;
+    margin-left:-35px;
+  }
+}

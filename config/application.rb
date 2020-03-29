@@ -14,6 +14,11 @@ module ElephantRH
     config.load_defaults 5.2
 
     config.i18n.default_locale = "pt-BR"
+    ENV['TZ'] = 'America/Sao_Paulo'
+    Time::DATE_FORMATS[:default] = "%d/%m/%Y %H:%M"
+    Date::DATE_FORMATS[:default] = "%d/%m/%Y"
+
+    config.time_zone = 'Brasilia'
 
     config.action_mailer.default_url_options = { host: "elephantrh.herokuapp.com" }
     config.action_mailer.delivery_method = :smtp

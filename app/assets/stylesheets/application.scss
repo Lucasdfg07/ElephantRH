@@ -8,6 +8,7 @@
  @import "shared/_navbar";
  @import "shared/_footer";
  @import "home";
+ @import "calendar";
  @import "patients";
 
  .alert {
@@ -39,3 +40,14 @@
  p {
  	font-size: 1em;
  }
+
+
+.pagination {
+  a, span {
+    padding: 0px 10px;
+  }
+
+  span, em {
+  	padding-top: 2px;
+  }
+}

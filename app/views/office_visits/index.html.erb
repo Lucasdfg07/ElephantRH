@@ -9,24 +9,28 @@
 <table class="table table-hover text-center">
   <thead>
     <tr>
+      <th>Data da consulta</th>
       <th>Descrição</th>
       <th>Anexos</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @office_visits.each do |office_visit| %>
       <tr>
-        <td><%= office_visit.description %></td>
+        <td><%= (office_visit.date.present?) ? office_visit.date : '-' %> <%= (office_visit.hour.present?) ? office_visit.hour : '-' %></td>
+        <td><p><%= (office_visit.description.present?) ? truncate(office_visit.description, :length => 20, separator: ' ') : '-' %></p></td>
         <td>
           <% office_visit.documents.each_with_index do |document, index| %>
             <%= link_to("Anexo #{index + 1} ", document.url, target: '_blank') %>
             <br />
           <% end %>
         </td>
+        <td><%= link_to 'Remarcar Paciente', edit_office_visit_path(office_visit, id_patient: @patient, remark: true), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Preencher Atendimento', edit_office_visit_path(office_visit, id_patient: @patient), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Pagamento', edit_office_visit_path(office_visit, id_patient: @patient), class: 'btn btn-warning' %></td>
         <td><%= link_to 'Exibir', office_visit, class: 'btn btn-info' %></td>
-        <td><%= link_to 'Editar', edit_office_visit_path(office_visit, id_patient: @patient), class: 'btn btn-success' %></td>
         <td><%= link_to 'Cancelar', office_visit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
@@ -35,7 +39,7 @@
 
 <br>
 
-<%= link_to 'Cadastrar nova consulta', new_office_visit_path(id_patient: @patient), class: 'btn btn-primary' %>
+<%= will_paginate @office_visits %>
 
 <br>
 

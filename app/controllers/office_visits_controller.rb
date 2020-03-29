@@ -4,7 +4,9 @@ class OfficeVisitsController < ApplicationController
 
 
   def index
-    @office_visits = OfficeVisit.all
+    @office_visits = @patient.office_visits
+                      .order(date: :ASC, hour: :ASC)
+                      .paginate(page: params[:page], per_page: 10)
   end
 
 
@@ -14,20 +16,26 @@ class OfficeVisitsController < ApplicationController
 
   def new
     @office_visit = OfficeVisit.new
+    show_calendar
   end
 
   def edit
+    show_calendar
   end
 
+  def show_calendar
+    @patients_per_day = OfficeVisit.joins(:patient).where("patients.user_id = ?", current_user.id).order(hour: :ASC).group_by(&:date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
 
   def create
     @office_visit = OfficeVisit.new(office_visit_params)
     @office_visit.patient = @patient
 
     if @office_visit.save
-      redirect_to office_visits_path(id_patient: params[:id_patient]), notice: 'Consulta criada com sucesso!'
+      redirect_to request.referrer, notice: 'Consulta criada com sucesso!'
     else
-      redirect_to office_visits_path(id_patient: params[:id_patient]), notice: 'Erro na criação da consulta.'
+      redirect_to request.referrer, notice: 'Erro na criação da consulta.'
     end
   end
 
@@ -58,6 +66,6 @@ class OfficeVisitsController < ApplicationController
 
 
     def office_visit_params
-      params.require(:office_visit).permit(:patient_id, :description, {documents: []})
+      params.require(:office_visit).permit(:patient_id, :date, :hour, :description, {documents: []})
     end
 end

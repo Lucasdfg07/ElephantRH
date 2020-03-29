@@ -1,5 +1,9 @@
-<section class="text-center col-md-4 offset-md-4">
+<section class="text-center">
 	<h1>Nova Consulta</h1>
 
-	<%= render 'form', office_visit: @office_visit %>
+	<% if params[:register].present? %>
+		<%= render 'register', office_visit: @office_visit %>
+	<% else %>
+		<%= render 'form', office_visit: @office_visit %>
+	<% end %>
 </section>

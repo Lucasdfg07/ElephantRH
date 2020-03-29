@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy, :graph]
+  before_action :set_patient, only: [:edit, :update, :destroy, :graph, :validation]
 
   def index
     if params[:search].present?
@@ -44,8 +44,20 @@ class PatientsController < ApplicationController
     end
   end
 
-  def show
+  def validation
+
   end
+
+  def validate 
+    @patient = Patient.find(params[:id_patient])
+
+    if @patient.validate_code(params[:patient][:code].to_i)
+      redirect_to office_visits_path(id_patient: @patient), notice: 'Autenticação realizada!'
+    else
+      redirect_to request.referrer, alert: 'Senha Inválida!'
+    end
+  end
+
 
   def destroy
     if @patient.destroy
@@ -63,6 +75,6 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:company, :marital_status, :name, :schooling, :age, :office, :avatar)
+    params.require(:patient).permit(:company, :marital_status, :name, :schooling, :age, :office, :code, :avatar)
   end
 end

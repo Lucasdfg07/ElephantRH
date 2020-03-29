@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_03_29_031031) do
 
   create_table "office_visits", force: :cascade do |t|
     t.bigint "patient_id"
+    t.date "date"
+    t.string "hour"
     t.string "description"
     t.json "documents"
     t.datetime "created_at", null: false
