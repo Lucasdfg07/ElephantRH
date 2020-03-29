@@ -21,19 +21,29 @@
         <section class="col-md-8 pt-3">
           <h3><%= patient.name %></h3>
 
-          <% if patient.form.present? %>
-            <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
-            <section class="row">
-              <%= link_to 'Visualizar PDF', export_forms_path(id: patient, format: :pdf), class: 'col-lg-3', target: "_blank" %>
-              <%= link_to 'Editar Formulário', edit_form_path(patient.form.id), class: 'col-lg-2' %>
-              <%= link_to 'Editar Perfil', edit_patient_path(patient), class: 'col-lg-2' %>
-              <%= link_to 'Gráfico', graph_patients_path(id: patient), class: 'col-lg-2' %>
-            </section>
+          <% if current_user.category == "Empresa" %>
+            <% if patient.form.present? %>
+              <p><%= truncate(patient.form.personal_moment, :length => 50, separator: ' ') %></p>
+              <section class="row">
+                <%= link_to 'Visualizar PDF', export_forms_path(id: patient, format: :pdf), class: 'col-lg-3', target: "_blank" %>
+                <%= link_to 'Editar Formulário', edit_form_path(patient.form.id), class: 'col-lg-2' %>
+                <%= link_to 'Editar Perfil', edit_patient_path(patient), class: 'col-lg-2' %>
+                <%= link_to 'Gráfico', graph_patients_path(id: patient), class: 'col-lg-2' %>
+              </section>
+            <% else %>
+              <section class="row">
+                <%= link_to 'Preencher Formulário', new_form_path(id: patient), class: 'col-md-5' %>
+                <%= link_to 'Editar Perfil', edit_patient_path(patient), class: 'col-md-5' %>
+              </section>
+            <% end %>
           <% else %>
-            <section class="row">
-              <%= link_to 'Preencher Formulário', new_form_path(id: patient), class: 'col-md-5' %>
-              <%= link_to 'Editar Perfil', edit_patient_path(patient), class: 'col-md-5' %>
-            </section>
+            <table class="text-center col-md-12">
+              <tr>
+                <td><%= link_to 'Consultas', validation_patients_path(id: patient)  %></td>
+                <td><%= link_to 'Agendar Consulta', new_office_visit_path(id_patient: patient, register: true) %></td>
+                <td><%= link_to 'Editar Perfil', edit_patient_path(patient) %></td>
+              </tr>
+            </table>
           <% end %>
 
         </section>

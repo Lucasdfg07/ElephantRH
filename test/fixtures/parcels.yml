@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  value: 1
+  observation: MyString
+
+two:
+  references: 
+  value: 1
+  observation: MyString

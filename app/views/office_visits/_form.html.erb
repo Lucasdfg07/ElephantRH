@@ -1,0 +1,29 @@
+<%= form_with(model: office_visit, local: true, class: 'col-md-4 offset-md-4') do |form| %>
+  
+  <p>
+    Paciente: <b><%= @patient.name %></b>
+  </p>
+
+  <%= hidden_field_tag :id_patient, params[:id_patient] %>
+
+  <div class="field form-group m-4">
+    <%= form.label :valor_cobrado %>
+    <%= form.number_field :value, step: :any, min: 0, placeholder: 'R$ 100,00', class: 'form-control' %>
+  </div>
+
+  <div class="field form-group m-4">
+    <%= form.label :descrição %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group m-4">
+      <%= form.label :anexos %> <br />
+      <%= form.file_field :documents, multiple: true, class: 'form-control' %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit 'Salvar', class: 'btn btn-info' %>
+  </div>
+
+  <%= link_to 'Voltar', :back, class: 'btn btn-warning m-4' %>
+<% end %>

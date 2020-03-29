@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_180432) do
+ActiveRecord::Schema.define(version: 2020_03_29_203843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,27 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.index ["patient_id"], name: "index_forms_on_patient_id"
   end
 
+  create_table "office_visits", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.date "date"
+    t.string "hour"
+    t.string "description"
+    t.float "value"
+    t.json "documents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_office_visits_on_patient_id"
+  end
+
+  create_table "parcels", force: :cascade do |t|
+    t.bigint "office_visit_id"
+    t.float "value"
+    t.string "observation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["office_visit_id"], name: "index_parcels_on_office_visit_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "form_id"
@@ -44,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.string "schooling"
     t.integer "age"
     t.string "office"
+    t.integer "code"
     t.index ["form_id"], name: "index_patients_on_form_id"
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
@@ -56,8 +78,10 @@ ActiveRecord::Schema.define(version: 2020_02_21_180432) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "office_visits", "patients"
 end

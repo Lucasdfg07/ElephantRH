@@ -17,6 +17,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require raphael
+//= require morris
 //= require_tree .
 
 // Set time to alert disappear

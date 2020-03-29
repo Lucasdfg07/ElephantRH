@@ -1,0 +1,51 @@
+<h3>Adicionar Parcela do Pagamento</h3>
+
+Paciente: <b><%= @office_visit.patient.name %></b>
+
+<section class="row text-center">
+  <section class="col-md-4">
+
+    <hr />
+      Valor a receber: <b style="color: red"><%= @office_visit.value %></b>
+    <hr />
+      Valor recebido: <b style="color: green"><%= @parcels.sum(:value) %></b>
+    <hr />
+    <%= render 'form', parcel: @parcel %>
+  </section>
+
+  <section class="col-md-8 mt-3">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Valor Recebido</th>
+          <th>Data de recebimento</th>
+          <th>Observação</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @parcels.count > 0 %>
+          <% @parcels.each do |parcel| %>
+            <% content_tag :div do %>
+              <%= @count += 1 %>
+            <% end %>
+
+            <tr>
+              <td><%= @count %></td>
+              <td><%= parcel.value %></td>
+              <td><%= parcel.created_at %></td>
+              <td><%= parcel.observation %></td>
+              <td><%= link_to 'Apagar', parcel, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <td colspan="5">Não existem gastos cadastrados ainda.</td>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= will_paginate @parcels %>
+  </section>
+</section> 

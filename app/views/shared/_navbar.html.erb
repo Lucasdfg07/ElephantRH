@@ -7,23 +7,31 @@
     <span class="navbar-icon"></span>
   </button>
 
-  <section class="collapse navbar-collapse offset-md-4" id="navbarNav">
-    <ul class="navbar-nav text-center">
-      <li class="nav-item col">
-        <%= link_to 'Home', root_path, class: 'nav_li' %>
-      </li>
+  <table id="navbarNav">
+    <tbody>
+      <tr class="navbar-nav text-center">
+        <td class="nav-item col">
+          <%= link_to 'Home', root_path, class: 'nav_li' %>
+        </td>
 
-      <li class="nav-item col">
-        <%= link_to 'Perfil', edit_user_registration_path, class: 'nav_li' %>
-      </li>
+        <td class="nav-item col">
+          <%= link_to 'Perfil', edit_user_registration_path, class: 'nav_li' %>
+        </td>
 
-      <li class="nav-item col">
-        <%= link_to 'Clientes', patients_path, class: 'nav_li' %>
-      </li>
+        <td class="nav-item col">
+          <%= link_to 'Clientes', patients_path, class: 'nav_li' %>
+        </td>
 
-      <li class="nav-item col">
-        <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => "nav_li"  %>
-      </li>
-    </ul>
-  </section>
+        <% if current_user.category == 'Autônomo' %>
+          <td class="nav-item col">
+            <%= button_to 'Pagamentos', graphs_index_path, class: 'nav_li' %>
+          </td>
+        <% end %>
+
+        <td class="nav-item col">
+          <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => "nav_li"  %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </nav>

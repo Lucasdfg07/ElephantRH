@@ -1,0 +1,9 @@
+<section class="text-center">
+	<h1>Editar Atendimento</h1>
+
+	<% if params[:remark].present? %>
+		<%= render 'register', office_visit: @office_visit %>
+	<% else %>
+		<%= render 'form', office_visit: @office_visit %>
+	<% end %>
+</section>
