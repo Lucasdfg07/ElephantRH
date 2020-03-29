@@ -1,0 +1,24 @@
+<%= form_with(model: office_visit, local: true) do |form| %>
+  
+  <p>
+    Paciente: <b><%= @patient.name %></b>
+  </p>
+
+  <%= hidden_field_tag :id_patient, params[:id_patient] %>
+
+  <div class="field form-group m-4">
+    <%= form.label :descrição %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group m-4">
+      <%= form.label :anexos %> <br />
+      <%= form.file_field :documents, multiple: true, class: 'form-control' %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit 'Salvar', class: 'btn btn-info' %>
+  </div>
+
+  <%= link_to 'Voltar', office_visits_path(id_patient: params[:id_patient]), class: 'btn btn-warning m-4' %>
+<% end %>

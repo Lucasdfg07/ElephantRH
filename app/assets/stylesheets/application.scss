@@ -1,0 +1,41 @@
+/*
+ *= require font-awesome
+ *= require_tree .
+ */
+ @import "bootstrap";
+ @import "devise/session";
+ @import "devise/registration";
+ @import "shared/_navbar";
+ @import "shared/_footer";
+ @import "home";
+ @import "patients";
+
+ .alert {
+   z-index: 9999;
+   width: 100%;
+   opacity: 0.6;
+   cursor: pointer;
+ }
+
+ .container {
+   margin-top: 50px;
+ }
+
+ a {
+ 	font-size: 1.2em;
+    background: none!important;
+ }
+
+ .btn {
+ 	color: rgba(10,10,10,0.6)!important;
+ 	background: none;
+ }
+
+ .btn:hover {
+ 	color: blue!important;
+ 	background:none;
+ }
+
+ p {
+ 	font-size: 1em;
+ }

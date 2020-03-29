@@ -3,12 +3,12 @@ class PatientsController < ApplicationController
 
   def index
     if params[:search].present?
-      @patients = current_user.patient.order(name: :ASC).
+      @patients = current_user.patients.order(name: :ASC).
         where("lower(name) LIKE :search OR lower(company) LIKE :search
         OR lower(marital_status) LIKE :search OR lower(schooling) LIKE :search
         OR lower(office) LIKE :search", search: "%#{params[:search].downcase}%").paginate(page: params[:page], per_page: 10)
     else
-      @patients = current_user.patient.order(name: :ASC).paginate(page: params[:page], per_page: 10)
+      @patients = current_user.patients.order(name: :ASC).paginate(page: params[:page], per_page: 10)
     end
   end
 

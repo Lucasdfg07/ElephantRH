@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  resources :office_visits
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
 
   root to: 'home#index'

@@ -26,6 +26,7 @@
             <section class="row">
               <%= link_to 'Visualizar PDF', export_forms_path(id: patient, format: :pdf), class: 'col-lg-3', target: "_blank" %>
               <%= link_to 'Editar Formulário', edit_form_path(patient.form.id), class: 'col-lg-2' %>
+              <%= link_to 'Consultas', office_visits_path(id_patient: patient), class: 'col-lg-2' %>
               <%= link_to 'Editar Perfil', edit_patient_path(patient), class: 'col-lg-2' %>
               <%= link_to 'Gráfico', graph_patients_path(id: patient), class: 'col-lg-2' %>
             </section>

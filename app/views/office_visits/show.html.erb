@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<% @office_visit.documents.each_with_index do |document, index| %>
+	  <%= link_to("Anexo #{index + 1} ", document.url, target: '_blank', class: 'btn btn-info m-2') %>
+	<% end %>
+</p>	
+
+<section class="text-center show_div">
+	<p>
+	  <strong>Paciente:</strong>
+	  <%= @office_visit.patient.name %>
+	</p>
+
+	<p>
+	  <strong>Descrição:</strong>
+	  <%= @office_visit.description %>
+	</p>
+
+	<%= link_to 'Voltar', :back, class: 'btn btn-warning' %>
+</section>
