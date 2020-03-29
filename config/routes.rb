@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
-
+  get 'graphs/index'
+  post 'graphs/index'
+  
   get 'pdf/generate_pdf'
 end

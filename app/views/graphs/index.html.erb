@@ -1,0 +1,64 @@
+<section class="page-header border-bottom pb-2">
+  <h3>Gráfico dos valores semanais</h3>
+</section>
+
+<section class="graph">
+  <%= content_tag :div, "", id: "line_graph", data: {graph: week_data} %>
+</section>
+
+<hr />
+
+<section class="page-header border-bottom pb-2">
+  <h3>Gráfico dos valores mensais</h3>
+</section>
+
+<section class="graph">
+  <%= content_tag :div, "", id: "line_graph2", data: {graph: month_data} %>
+</section>
+
+<hr />
+
+<section class="page-header border-bottom pb-2">
+  <h3>Gráfico dos valores anuais</h3>
+</section>
+
+<section class="graph">
+  <%= content_tag :div, "", id: "line_graph3", data: {graph: annual_data} %>
+</section>
+
+<%= javascript_tag do -%>
+  $( document ).on('turbolinks:load', function() {
+    Morris.Line({
+      element: 'line_graph',
+      data: $('#line_graph').data('graph'),
+      xkey: 'created_at',
+      ykeys: ['collected'],
+      labels: ['Quantia Recebida (R$)'],
+      lineColors: ['#007bff']
+    }).on('click', function(i, row){
+      console.log(i, row);
+    });
+
+    Morris.Line({
+      element: 'line_graph2',
+      data: $('#line_graph2').data('graph'),
+      xkey: 'created_at',
+      ykeys: ['collected'],
+      labels: ['Quantia Recebida (R$)'],
+      lineColors: ['#007bff']
+    }).on('click', function(i, row){
+      console.log(i, row);
+    });
+
+    Morris.Line({
+      element: 'line_graph3',
+      data: $('#line_graph3').data('graph'),
+      xkey: 'created_at',
+      ykeys: ['collected'],
+      labels: ['Quantia Recebida (R$)'],
+      lineColors: ['#007bff']
+    }).on('click', function(i, row){
+      console.log(i, row);
+    });
+  });
+<% end -%>

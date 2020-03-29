@@ -45,7 +45,6 @@ class PatientsController < ApplicationController
   end
 
   def validation
-
   end
 
   def validate 

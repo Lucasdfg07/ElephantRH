@@ -23,11 +23,6 @@ class OfficeVisitsController < ApplicationController
     show_calendar
   end
 
-  def show_calendar
-    @patients_per_day = OfficeVisit.joins(:patient).where("patients.user_id = ?", current_user.id).order(hour: :ASC).group_by(&:date)
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
-  end
-
   def create
     @office_visit = OfficeVisit.new(office_visit_params)
     @office_visit.patient = @patient
@@ -55,6 +50,11 @@ class OfficeVisitsController < ApplicationController
   end
 
   private
+
+    def show_calendar
+      @patients_per_day = OfficeVisit.joins(:patient).where("patients.user_id = ?", current_user.id).order(hour: :ASC).group_by(&:date)
+      @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    end
 
     def set_patient
       @patient = Patient.find(params[:id_patient])

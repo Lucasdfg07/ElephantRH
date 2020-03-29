@@ -11,6 +11,8 @@
  @import "calendar";
  @import "patients";
 
+ @import 'morrisjs-rails';
+
  .alert {
    z-index: 9999;
    width: 100%;
