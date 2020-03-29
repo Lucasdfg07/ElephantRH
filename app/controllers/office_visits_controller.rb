@@ -66,6 +66,6 @@ class OfficeVisitsController < ApplicationController
 
 
     def office_visit_params
-      params.require(:office_visit).permit(:patient_id, :date, :hour, :description, {documents: []})
+      params.require(:office_visit).permit(:patient_id, :value, :date, :hour, :description, {documents: []})
     end
 end

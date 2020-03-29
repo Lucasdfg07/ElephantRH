@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :parcels
+  
   resources :office_visits
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

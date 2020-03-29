@@ -29,7 +29,7 @@
         </td>
         <td><%= link_to 'Remarcar Paciente', edit_office_visit_path(office_visit, id_patient: @patient, remark: true), class: 'btn btn-primary' %></td>
         <td><%= link_to 'Preencher Atendimento', edit_office_visit_path(office_visit, id_patient: @patient), class: 'btn btn-success' %></td>
-        <td><%= link_to 'Pagamento', edit_office_visit_path(office_visit, id_patient: @patient), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Pagamento', parcels_path(office: office_visit, id_patient: params[:id_patient]), class: 'btn btn-warning' %></td>
         <td><%= link_to 'Exibir', office_visit, class: 'btn btn-info' %></td>
         <td><%= link_to 'Cancelar', office_visit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>

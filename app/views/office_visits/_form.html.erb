@@ -7,6 +7,11 @@
   <%= hidden_field_tag :id_patient, params[:id_patient] %>
 
   <div class="field form-group m-4">
+    <%= form.label :valor_cobrado %>
+    <%= form.number_field :value, step: :any, min: 0, placeholder: 'R$ 100,00', class: 'form-control' %>
+  </div>
+
+  <div class="field form-group m-4">
     <%= form.label :descrição %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>

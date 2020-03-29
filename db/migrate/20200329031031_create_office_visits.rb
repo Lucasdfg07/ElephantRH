@@ -5,6 +5,7 @@ class CreateOfficeVisits < ActiveRecord::Migration[5.2]
       t.date :date
       t.string :hour
       t.string :description
+      t.float :value
       t.json :documents
 
       t.timestamps
