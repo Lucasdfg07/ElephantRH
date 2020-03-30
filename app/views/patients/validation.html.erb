@@ -1,0 +1,15 @@
+<section class="text-center col-md-4 offset-md-4">
+	<%= form_for @patient, url: {action: :validate} do |f| %>
+
+		<%= hidden_field_tag :id_patient, @patient.id %>
+
+		<section class="field">
+          Senha <br />
+          <%= f.password_field :code %>
+        </section>
+
+        <%= f.submit 'Enviar', class: 'btn btn-primary mt-4' %>
+	<% end %>
+
+	<%= link_to 'Voltar', patients_path, class: 'btn btn-warning mt-3' %>
+</section>

@@ -1,6 +1,3 @@
-// Place all the styles related to the patient controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .patients-list {
   margin-top: 20px;
   padding: 20px;
@@ -21,6 +18,10 @@
       font-size: 1.3em;
       color: rgba(200,30,30,0.8);
   }
+}
+
+.date_div {
+  margin-top: 100px;  
 }
 
 .new_patient {
@@ -88,11 +89,5 @@
     .save {
       width: 150px;
     }
-  }
-}
-
-.pagination {
-  a, span {
-    padding: 0px 10px;
   }
 }

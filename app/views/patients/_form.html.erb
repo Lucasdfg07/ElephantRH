@@ -37,6 +37,14 @@
             </section>
           </section>
 
+          <% if current_user.category == 'Autônomo' %>
+            <section class="text-center mt-4">
+                Código de segurança <br />
+                <small>Código para acessar as consultas do paciente</small>
+                <%= f.password_field :code, class: 'text-center' %>
+            </section>
+          <% end %>
+
 
           <section class="inferior-buttons">
             <%= f.file_field :avatar, class: 'photo' %>
@@ -44,6 +52,10 @@
             <br />
 
             <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
+
+            <br />
+
+            <%= link_to 'Voltar', :back, class: 'btn btn-warning m-4' %>
           </section>
         </section>
       </section>

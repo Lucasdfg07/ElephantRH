@@ -1,14 +1,14 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy, :graph]
+  before_action :set_patient, only: [:edit, :update, :destroy, :graph, :validation]
 
   def index
     if params[:search].present?
-      @patients = current_user.patient.order(name: :ASC).
+      @patients = current_user.patients.order(name: :ASC).
         where("lower(name) LIKE :search OR lower(company) LIKE :search
         OR lower(marital_status) LIKE :search OR lower(schooling) LIKE :search
         OR lower(office) LIKE :search", search: "%#{params[:search].downcase}%").paginate(page: params[:page], per_page: 10)
     else
-      @patients = current_user.patient.order(name: :ASC).paginate(page: params[:page], per_page: 10)
+      @patients = current_user.patients.order(name: :ASC).paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -44,8 +44,19 @@ class PatientsController < ApplicationController
     end
   end
 
-  def show
+  def validation
   end
+
+  def validate 
+    @patient = Patient.find(params[:id_patient])
+
+    if @patient.validate_code(params[:patient][:code].to_i)
+      redirect_to office_visits_path(id_patient: @patient), notice: 'Autenticação realizada!'
+    else
+      redirect_to request.referrer, alert: 'Senha Inválida!'
+    end
+  end
+
 
   def destroy
     if @patient.destroy
@@ -63,6 +74,6 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:company, :marital_status, :name, :schooling, :age, :office, :avatar)
+    params.require(:patient).permit(:company, :marital_status, :name, :schooling, :age, :office, :code, :avatar)
   end
 end

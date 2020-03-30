@@ -1,4 +1,4 @@
-nav {
+.navbar {
   background-color: #03a9f4;
   height: 45px;
 
@@ -7,12 +7,23 @@ nav {
     margin-top: -5px;
   }
 
-  li {
-    margin: 0px 20px;
+  input {
+    background:none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+  }
+  
+  input:hover {
+    text-decoration: underline;
   }
 
   a {
     color: white;
+  }
+
+  table {
+    width: 100%!important;
   }
 
   .active {
@@ -28,6 +39,11 @@ nav {
       color: white;
       display: block;
     }
+    .nav-item {
+        padding:10px 0px;
+        border-bottom: 1px solid black;
+    }
+
     #navbarNav {
       text-align: center;
       background-color: rgba(245,245,245,0.9);
@@ -35,12 +51,7 @@ nav {
       z-index: 9999;
     }
 
-    #navbarNav li {
-      padding:10px 0px;
-      border-bottom: 1px solid black;
-      margin: 0px;
-    }
-    #navbarNav a {
+    #navbarNav a, #navbarNav input {
       color: black;
     }
   }
