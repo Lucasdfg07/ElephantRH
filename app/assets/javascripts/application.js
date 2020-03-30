@@ -29,8 +29,10 @@ $(function() {
 });
 
 $( document ).on('turbolinks:load', function() {
-  $('#navbarNav').hide();
-  $('nav .navbar-toggler').click( function() {
-    $('#navbarNav').toggle(500);
-  });
+	if( $(window).width() <= 960){
+	  $('#navbarNav').hide();
+	  $('nav .navbar-toggler').click( function() {
+	    $('#navbarNav').toggle(500);
+	  });
+	}
 });
