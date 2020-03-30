@@ -37,13 +37,11 @@
               </section>
             <% end %>
           <% else %>
-            <table class="text-center col-md-12">
-              <tr>
-                <td><%= link_to 'Consultas', validation_patients_path(id: patient)  %></td>
-                <td><%= link_to 'Agendar Consulta', new_office_visit_path(id_patient: patient, register: true) %></td>
-                <td><%= link_to 'Editar Perfil', edit_patient_path(patient) %></td>
-              </tr>
-            </table>
+            <section class="text-center row">
+              <%= link_to 'Consultas', validation_patients_path(id: patient), class: 'col-md-3'  %>
+              <%= link_to 'Agendar Consulta', new_office_visit_path(id_patient: patient, register: true), class: 'col-md-4' %>
+              <%= link_to 'Editar Perfil', edit_patient_path(patient), class: 'col-md-3' %>
+            </section>
           <% end %>
 
         </section>
