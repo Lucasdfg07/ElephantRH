@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem 'devise'
 gem 'devise-i18n'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'mini_magick'
 
 gem "font-awesome-rails"
